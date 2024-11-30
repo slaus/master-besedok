@@ -1,0 +1,77 @@
+.slider {
+    height         : 750px;
+    width          : 100%;
+    background     : url("../img/slider-bg1.jpg") center -30px no-repeat;
+    background-size: cover;
+
+    &__block {
+        display    : flex;
+        align-items: center;
+        height     : 750px;
+    }
+
+    &__item {
+        display              : grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items          : center;
+        gap                  : 50px;
+        padding              : 5% 0 calc(5% + 30px);
+        height               : 100%;
+
+        &-img {
+            width      : 100%;
+            height     : 100%;
+            display    : flex;
+            align-items: center;
+
+            img {
+                width     : 100%;
+                height    : 100%;
+                object-fit: cover;
+            }
+        }
+
+        &-text {
+            width         : 100%;
+            max-width     : 620px;
+            background    : rgba(204, 189, 175, 0.9);
+            border-radius : 40px;
+            padding       : 60px 45px;
+            display       : flex;
+            flex-direction: column;
+            gap           : 40px;
+        }
+
+        &-title {
+            font-size  : 40px;
+            line-height: 48px;
+            font-family: $fontSecondary;
+            text-transform: uppercase;
+        }
+
+        &-subtitle {
+            font-weight: 500;
+            font-size  : 24px;
+            line-height: 32px;
+        }
+
+        &-btn {
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            padding        : 0 24px;
+            width          : 136px;
+            line-height    : 52px;
+            background     : $brown;
+            border-radius  : 8px;
+            color          : $white;
+            font-weight    : 500;
+            font-size      : 16px;
+
+            &:hover {
+                background: $orange;
+            }
+
+        }
+    }
+}

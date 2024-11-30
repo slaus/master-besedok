@@ -1,0 +1,178 @@
+.header {
+    height    : 110px;
+    background: $white;
+
+    &__block {
+        height         : 110px;
+        display        : flex;
+        justify-content: space-between;
+        align-items    : center;
+        gap            : 25px;
+    }
+
+    &__logo {
+        margin-right  : auto;
+        display       : flex;
+        gap           : 10px;
+        align-items   : center;
+        font-size     : 16px;
+        font-weight   : 500;
+        color         : $black;
+        text-transform: uppercase;
+    }
+
+    &__email {
+        a {
+            display    : flex;
+            gap        : 10px;
+            align-items: center;
+            font-size  : 16px;
+            font-weight: 500;
+            color      : $black;
+
+            img {
+                transition: all .1s ease;
+            }
+
+            &:hover {
+                color: $orange;
+
+                img {
+                    filter: invert(66%) sepia(58%) saturate(3211%) hue-rotate(338deg) brightness(98%) contrast(106%);
+                }
+            }
+        }
+
+        img {
+            width     : 28px;
+            height    : 28px;
+            object-fit: contain;
+        }
+    }
+
+    &__phone {
+        a {
+            display    : flex;
+            gap        : 10px;
+            align-items: center;
+            font-size  : 16px;
+            font-weight: 500;
+            color      : $black;
+
+            img {
+                transition: all .1s ease;
+            }
+
+            &:hover {
+                color: $orange;
+
+                img {
+                    filter: invert(66%) sepia(58%) saturate(3211%) hue-rotate(338deg) brightness(98%) contrast(106%);
+                }
+            }
+        }
+
+        img {
+            width     : 28px;
+            height    : 28px;
+            object-fit: contain;
+        }
+    }
+
+    &__whatsapp {
+        a {
+            display    : flex;
+            gap        : 10px;
+            align-items: center;
+            font-size  : 16px;
+            font-weight: 500;
+            color      : $black;
+
+            &:hover {
+                color: $orange;
+            }
+        }
+
+        img {
+            width     : 28px;
+            height    : 28px;
+            object-fit: contain;
+        }
+    }
+
+    &__rating {
+        a {
+            display    : flex;
+            align-items: center;
+        }
+    }
+
+    &__search {
+
+        &-block {
+            height         : 48px;
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+            padding        : 0 16px;
+            cursor         : pointer;
+            position       : relative;
+            width          : 60px;
+
+            &:after {
+                content        : "";
+                width          : 28px;
+                height         : 28px;
+                background     : url("../img/icon-search.svg") center center no-repeat;
+                background-size: contain;
+                z-index        : 1;
+                transition: all .1s ease;
+            }
+
+            &:hover {
+                &:after {
+                    filter: invert(66%) sepia(58%) saturate(3211%) hue-rotate(338deg) brightness(98%) contrast(106%);
+                }
+            }
+
+            &.open {
+
+                .header__search-form {
+                    width       : 260px;
+                    padding-left: 20px;
+                }
+
+                .header__search-form--input {
+                    width: 180px;
+                }
+            }
+        }
+
+        &-form {
+            height       : 48px;
+            width        : 100%;
+            display      : flex;
+            align-items  : center;
+            border       : 1px solid $brown;
+            border-radius: 48px;
+            position     : absolute;
+            right        : 0;
+            top          : 0;
+            width        : 100%;
+            background   : $white;
+            transition: all .3s ease;
+
+            &--input {
+                display   : flex;
+                width     : 0;
+                height: 100%;
+                transition: all .3s ease;
+                outline: none;
+            }
+
+            &--btn {
+                font-size: 0;
+            }
+        }
+    }
+}

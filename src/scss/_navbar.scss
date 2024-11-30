@@ -1,0 +1,235 @@
+.navbar {
+    width        : 100%;
+    height       : 100px;
+    background   : $brownLight;
+    border-top   : 1px solid $brown;
+    border-bottom: 1px solid $brown;
+
+    &__block {
+        height         : 100px;
+        position       : relative;
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
+    }
+
+    &__nav {}
+
+    &__info {
+        position       : absolute;
+        right          : 0;
+        top            : 50%;
+        transform      : translateY(-50%);
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+
+        a {
+            background   : $brown;
+            border-radius: 8px;
+            padding      : 16px 24px;
+            height       : 52px;
+            color        : $white;
+            display      : block;
+
+            &:hover {
+                background: $orange;
+            }
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    gap    : 5px;
+
+    &__item {
+        display : flex;
+        align-items: center;
+        position: relative;
+
+        &:first-child {
+            display: none;
+        }
+
+        &-parent {
+            &:after {
+                content: "";
+                display: flex;
+                width: 20px;
+                height: 20px;
+                background: url("../img/icon-arrow-down.svg") center center no-repeat;
+                background-size: contain;
+                margin-left: -5px;
+                margin-right: 5px;
+                transition: all .4s ease;
+            }
+
+            &:hover {
+                &:after {
+                    transform: rotate(180deg);
+                }
+
+                .submenu {
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    z-index   : 2;
+                    height    : auto;
+                    opacity   : 1;
+                    transform: translateY(0px);
+                }
+            }
+
+            &:hover,
+            &:focus-within {
+                background   : $white;
+                border-radius: 4px;
+            }
+        }
+
+        &-link {
+            display      : flex;
+            position     : relative;
+            font-size    : 16px;
+            line-height  : 20px;
+            font-family  : $fontSecondary;
+            color        : $black;
+            transition   : all 0.3s ease;
+            padding      : 12px;
+            height       : 44px;
+            background   : transparent;
+            border-radius: 4px;
+
+            &:hover {
+                background: $white;
+            }
+        }
+    }
+
+    @media screen and (max-width: $burgerBreakpoint) {
+        position  : fixed;
+        background: $burgerColor;
+        left      : 0;
+        top       : 0;
+        height    : 100vh;
+        width     : 100vw;
+        display   : none;
+
+        &.active {
+            display        : flex;
+            left           : 0;
+            top            : 0;
+            height         : 100vh;
+            width          : 100vw;
+            flex-direction : column;
+            pointer-events : all;
+            justify-content: center;
+            align-items    : center;
+            z-index        : 2;
+            animation      : fade 0.1s linear;
+        }
+    }
+}
+
+.submenu {
+    position        : absolute;
+    left            : 0;
+    top             : 100%;
+    width           : max-content;
+    background      : $brownLight;
+    box-shadow      : none;
+    z-index         : -2;
+    // height          : 0;
+    opacity         : 0;
+    border-radius   : 8px;
+    overflow        : hidden;
+    border-top      : 2px solid $brownLight;
+    transition      : all .5s ease;
+    transform: translateY(100px);
+
+
+    &__item {
+        display : flex;
+        position: relative;
+
+        &-link {
+            display      : flex;
+            position     : relative;
+            font-size    : 16px;
+            line-height  : 20px;
+            font-family  : $fontSecondary;
+            color        : $black;
+            transition   : all 0.3s ease;
+            padding      : 12px;
+            width        : 100%;
+            height       : 44px;
+            background   : transparent;
+            border-radius: 4px;
+
+            &:hover {
+                background: $white;
+            }
+        }
+    }
+}
+
+.burger {
+    display   : none;
+    background: transparent;
+    z-index   : 3;
+
+    @media screen and (max-width: $burgerBreakpoint) {
+        display : flex;
+        position: relative;
+        height  : 20px;
+        width   : 30px;
+
+        &.active {
+            &:before {
+                background: $burgerActiveColor;
+                transform : rotate(45deg);
+                transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+                top       : 8px;
+            }
+
+            &:after {
+                background: $burgerActiveColor;
+                transform : rotate(-45deg);
+                bottom    : 10px;
+                transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+            }
+
+            & span {
+                transform: scale(0);
+            }
+        }
+
+        &:before,
+        &:after {
+            content   : '';
+            position  : absolute;
+            height    : 2px;
+            width     : 100%;
+            background: $burgerColor;
+            transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+        }
+
+        &:before {
+            top: 0;
+        }
+
+        &::after {
+            bottom: 0;
+        }
+
+        span {
+            position  : absolute;
+            top       : 9px;
+            right     : 0;
+            width     : 100%;
+            background: $burgerColor;
+            height    : 2px;
+            transform : scale(1);
+            transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+        }
+    }
+}

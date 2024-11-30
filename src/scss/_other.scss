@@ -1,0 +1,142 @@
+.other {
+    display: block;
+    margin : 50px 0;
+    padding: 30px 0;
+
+    // @media screen and (max-width: $breakpoint1600) {
+    //     padding: 20px 5%;
+    // }
+
+    // @media screen and (max-width: $breakpoint1450) {
+    //     padding: 20px 0;
+    // }
+
+    // &__title {
+    //     @media screen and (max-width: $breakpoint577) {
+    //         text-align: center;
+    //     }
+    // }
+
+    &__container {
+        background: $brownLight;
+        padding   : 50px 0;
+    }
+
+    &__block {
+        display       : block;
+        position      : relative;
+        overflow      : hidden;
+        padding-bottom: 20px;
+
+        // @media screen and (max-width: $breakpoint577) {
+        //     padding-bottom: 0;
+        // }
+    }
+
+    &__wrapper {
+        display              : grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap                  : 40px;
+    }
+
+    &__item {
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        align-items    : center;
+        padding        : 12px;
+        gap            : 8px;
+        background   : #ECE7E2;
+        border-radius: 12px;
+        transition: all .5s ease;
+        width: calc(100% - 8px);
+        color: $black;
+
+        &:hover {
+            box-shadow   : 4px 4px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        &--img {
+            width        : 100%;
+            height       : 240px;
+            border-radius: 15px;
+            overflow     : hidden;
+
+            @media screen and (max-width: $breakpoint992) {
+                height: 250px;
+            }
+
+            img {
+                width     : 100%;
+                height    : 100%;
+                object-fit: cover;
+            }
+        }
+
+        &--title {
+            margin-top : 20px;
+            font-weight: 500;
+            font-size  : 16px;
+            line-height: 20px;
+
+            // @media screen and (max-width: $breakpoint1450) {
+            //     font-size: 20px;
+            // }
+
+            // @media screen and (max-width: $breakpoint1200) {
+            //     font-size : 19px;
+            //     text-align: center;
+            // }
+        }
+
+        &--info {
+            display        : flex;
+            align-items    : flex-end;
+            justify-content: space-between;
+            margin-top     : 0;
+            margin-bottom: 20px;
+
+            @media screen and (max-width: $breakpoint1200) {
+                flex-direction: column;
+                align-items   : center;
+                gap           : 10px;
+            }
+
+            &-price {
+                display       : flex;
+                flex-direction: column;
+                font-weight   : 500;
+                line-height   : 20px;
+
+                @media screen and (max-width: $breakpoint1200) {
+                    text-align: center;
+                }
+
+                span {
+                    font-size  : 16px;
+                    white-space: nowrap;
+
+                    // @media screen and (max-width: $breakpoint1450) {
+                    //     font-size: 19px;
+                    // }
+
+                    // @media screen and (max-width: $breakpoint1200) {
+                    //     font-size: 18px;
+                    // }
+
+                    span {
+                        font-size: 16px;
+
+                        // @media screen and (max-width: $breakpoint1450) {
+                        //     font-size: 21px;
+                        // }
+
+                        // @media screen and (max-width: $breakpoint1200) {
+                        //     font-size: 19px;
+                        // }
+                    }
+                }
+            }
+        }
+    }
+}

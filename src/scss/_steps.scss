@@ -1,0 +1,71 @@
+.steps {
+    display: block;
+    margin : 50px 0;
+    padding: 30px 0;
+
+    &__container {
+        background: $brownLight;
+        padding   : 50px 0;
+    }
+
+    &__block {
+        gap    : 10px;
+        display: grid;
+        grid-template-columns: repeat(6,1fr);
+
+        &:nth-child(2) {
+            grid-template-columns: repeat(5,1fr);
+        }
+    }
+
+    &__item {
+        display       : flex;
+        flex-direction: column;
+        gap           : 20px;
+
+        &:not(:last-child) {
+            position: relative;
+            
+            &:after {
+                content: "";
+                display: block;
+                width: calc(100% - 80px);
+                left: 80px;
+                top: 35px;
+                height: 2px;
+                background: $orange;
+                position: absolute;
+
+            }
+        }
+
+        &-number {
+            font-size      : 32px;
+            line-height    : 36px;
+            font-weight    : 500;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            color          : $white;
+            width          : 70px;
+            height         : 70px;
+            border-radius  : 50%;
+            background     : $orange;
+            margin-bottom  : 16px;
+
+        }
+
+        &-title {
+            font-size  : 16px;
+            line-height: 20px;
+            font-weight: 500;
+            padding-right: 10%;
+        }
+
+        &-desc {
+            font-size  : 14px;
+            line-height: 20px;
+            padding-right: 10%;
+        }
+    }
+}

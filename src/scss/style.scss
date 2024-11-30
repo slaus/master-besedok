@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&family=Ubuntu:wght@400;500&display=swap');
+
+// Global SCSS-files imports
+@import './vars';
+@import './reset';
+@import './global';
+
+// Sections or Pages SCSS-files imports
+@import './header';
+@import './navbar';
+@import './slider';
+@import './making';
+@import './tabs';
+@import './projects';
+@import './steps';
+@import './company';
+@import './best';
+@import './individual';
+@import './video';
+@import './calc';
+@import './other';
+@import './cert';
+@import './gerb';
+@import './footer';
+@import './modal';
+
+
+// Libs
+@import './libs/swiper';
+@import './swiper';
