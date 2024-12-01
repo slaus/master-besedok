@@ -4,6 +4,12 @@
     background   : $brownLight;
     border-top   : 1px solid $brown;
     border-bottom: 1px solid $brown;
+    position: relative;
+    z-index: 2;
+
+    @media screen and (max-width: $breakpoint1450) {
+        height: 80px;
+    }
 
     &__block {
         height         : 100px;
@@ -11,6 +17,14 @@
         display        : flex;
         align-items    : center;
         justify-content: center;
+
+        @media screen and (max-width: $breakpoint1450) {
+            height: 80px;
+        }
+
+        @media screen and (max-width: $breakpoint1200) {
+            justify-content: flex-start;
+        }
     }
 
     &__nav {}
@@ -32,6 +46,10 @@
             color        : $white;
             display      : block;
 
+            @media screen and (max-width: $breakpoint1450) {
+                height: 48px;
+            }
+
             &:hover {
                 background: $orange;
             }
@@ -44,9 +62,9 @@
     gap    : 5px;
 
     &__item {
-        display : flex;
+        display    : flex;
         align-items: center;
-        position: relative;
+        position   : relative;
 
         &:first-child {
             display: none;
@@ -54,15 +72,15 @@
 
         &-parent {
             &:after {
-                content: "";
-                display: flex;
-                width: 20px;
-                height: 20px;
-                background: url("../img/icon-arrow-down.svg") center center no-repeat;
+                content        : "";
+                display        : flex;
+                width          : 20px;
+                height         : 20px;
+                background     : url("../img/icon-arrow-down.svg") center center no-repeat;
                 background-size: contain;
-                margin-left: -5px;
-                margin-right: 5px;
-                transition: all .4s ease;
+                margin-left    : -5px;
+                margin-right   : 5px;
+                transition     : all .4s ease;
             }
 
             &:hover {
@@ -75,7 +93,7 @@
                     z-index   : 2;
                     height    : auto;
                     opacity   : 1;
-                    transform: translateY(0px);
+                    transform : translateY(0px);
                 }
             }
 
@@ -107,7 +125,7 @@
 
     @media screen and (max-width: $burgerBreakpoint) {
         position  : fixed;
-        background: $burgerColor;
+        background: $brownLight;
         left      : 0;
         top       : 0;
         height    : 100vh;
@@ -131,20 +149,20 @@
 }
 
 .submenu {
-    position        : absolute;
-    left            : 0;
-    top             : 100%;
-    width           : max-content;
-    background      : $brownLight;
-    box-shadow      : none;
-    z-index         : -2;
+    position           : absolute;
+    left               : 0;
+    top                : 100%;
+    width              : max-content;
+    background         : $brownLight;
+    box-shadow         : none;
+    z-index            : -2;
     // height          : 0;
-    opacity         : 0;
-    border-radius   : 8px;
-    overflow        : hidden;
-    border-top      : 2px solid $brownLight;
-    transition      : all .5s ease;
-    transform: translateY(100px);
+    opacity            : 0;
+    border-radius      : 8px;
+    overflow           : hidden;
+    border-top         : 2px solid $brownLight;
+    transition         : all .5s ease;
+    transform          : translateY(100px);
 
 
     &__item {

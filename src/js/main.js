@@ -61,6 +61,7 @@ const dropdowns = document.querySelectorAll('.calc__form-dropdown');
       if (target.tagName === 'A') {
         const selectedText = group.querySelector('.calc__form-selected');
         selectedText.textContent = target.getAttribute('data-value');
+        selectedText.classList.add("selected");
         group.querySelector("span").style.display = 'none';
       }
     });
@@ -187,7 +188,7 @@ const swiperSlider = new Swiper('.swiper-slider', {
 
 const swiperBest = new Swiper('.swiper-best', {
   slidesPerView: 1,
-  spaceBetween: 30,
+  spaceBetween: 10,
   loop: true,
   mousewheel: false,
   grabCursor: true,
@@ -211,26 +212,26 @@ const swiperBest = new Swiper('.swiper-best', {
   breakpoints: {
     480: {
       slidesPerView: 1,
-      spaceBetween: 20
+      spaceBetween: 10
+    },
+    577: {
+      slidesPerView: 2,
+      spaceBetween: 10
     },
     992: {
       slidesPerView: 2,
-      spaceBetween: 20
+      spaceBetween: 10
     },
     1200: {
       slidesPerView: 3,
-      spaceBetween: 30
-    },
-    1450: {
-      slidesPerView: 3,
-      spaceBetween: 30
+      spaceBetween: 20
     },
   }
 });
 
 const swiperIndividual = new Swiper('.swiper-individual', {
   slidesPerView: 1,
-  spaceBetween: 30,
+  spaceBetween: 10,
   loop: true,
   mousewheel: false,
   grabCursor: true,
@@ -254,26 +255,26 @@ const swiperIndividual = new Swiper('.swiper-individual', {
   breakpoints: {
     480: {
       slidesPerView: 1,
-      spaceBetween: 20
+      spaceBetween: 10
+    },
+    577: {
+      slidesPerView: 2,
+      spaceBetween: 10
     },
     992: {
       slidesPerView: 2,
-      spaceBetween: 20
+      spaceBetween: 10
     },
     1200: {
       slidesPerView: 3,
-      spaceBetween: 30
-    },
-    1450: {
-      slidesPerView: 3,
-      spaceBetween: 30
+      spaceBetween: 20
     },
   }
 });
 
 const swiperVideo = new Swiper('.swiper-video', {
   slidesPerView: 1,
-  spaceBetween: 30,
+  spaceBetween: 10,
   loop: true,
   mousewheel: false,
   grabCursor: true,
@@ -297,26 +298,26 @@ const swiperVideo = new Swiper('.swiper-video', {
   breakpoints: {
     480: {
       slidesPerView: 1,
-      spaceBetween: 20
+      spaceBetween: 10
+    },
+    577: {
+      slidesPerView: 2,
+      spaceBetween: 10
     },
     992: {
       slidesPerView: 2,
-      spaceBetween: 20
+      spaceBetween: 10
     },
     1200: {
       slidesPerView: 3,
-      spaceBetween: 30
-    },
-    1450: {
-      slidesPerView: 3,
-      spaceBetween: 30
+      spaceBetween: 20
     },
   }
 });
 
 const swiperCert = new Swiper('.swiper-cert', {
   slidesPerView: 1,
-  spaceBetween: 30,
+  spaceBetween: 10,
   loop: true,
   mousewheel: false,
   grabCursor: true,
@@ -340,26 +341,26 @@ const swiperCert = new Swiper('.swiper-cert', {
   breakpoints: {
     480: {
       slidesPerView: 2,
-      spaceBetween: 20
+      spaceBetween: 10
     },
     992: {
       slidesPerView: 3,
-      spaceBetween: 20
+      spaceBetween: 10
     },
     1200: {
       slidesPerView: 4,
-      spaceBetween: 30
+      spaceBetween: 20
     },
     1450: {
       slidesPerView: 5,
-      spaceBetween: 30
+      spaceBetween: 20
     },
   }
 });
 
 const swiperTerms = new Swiper('.swiper-gerb', {
   slidesPerView: 1,
-  spaceBetween: 30,
+  spaceBetween: 10,
   loop: true,
   mousewheel: false,
   grabCursor: true,
@@ -383,23 +384,92 @@ const swiperTerms = new Swiper('.swiper-gerb', {
   breakpoints: {
     480: {
       slidesPerView: 2,
-      spaceBetween: 20
+      spaceBetween: 10
     },
     768: {
       slidesPerView: 4,
-      spaceBetween: 20
+      spaceBetween: 10
     },
     992: {
       slidesPerView: 5,
-      spaceBetween: 20
+      spaceBetween: 10
     },
     1200: {
       slidesPerView: 6,
-      spaceBetween: 30
+      spaceBetween: 20
     },
     1500: {
       slidesPerView: 7,
-      spaceBetween: 30
+      spaceBetween: 20
     },
   }
 });
+
+
+/** Mobile swiper */
+function initSwipers(swiperSelectors) {
+  const isMobile = window.innerWidth <= 1199;
+
+  swiperSelectors.forEach((selector) => {
+    const swiperEl = document.querySelector(selector);
+
+    if (!swiperEl) return;
+
+    if (isMobile) {
+      if (!swiperEl.classList.contains('swiper-initialized')) {
+        swiperEl.classList.add('swiper');
+        const swiper = new Swiper(selector, {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          loop: true,
+          mousewheel: false,
+          grabCursor: true,
+          autoplay: {
+            delay: 7500,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: `${selector} .swiper-pagination`,
+          },
+          navigation: {
+            nextEl: `${selector} .swiper-button-next`,
+            prevEl: `${selector} .swiper-button-prev`,
+          },
+          keyboard: {
+            enabled: true,
+          },
+          scrollbar: {
+            el: `${selector} .swiper-scrollbar`,
+          },
+          breakpoints: {
+            480: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            577: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            992: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+          },
+        });
+
+        swiperEl.swiperInstance = swiper;
+      }
+    } else {
+      if (swiperEl.classList.contains('swiper-initialized')) {
+        swiperEl.swiperInstance.destroy(true, true);
+        swiperEl.classList.remove('swiper');
+        delete swiperEl.swiperInstance;
+      }
+    }
+  });
+}
+
+const swiperClasses = ['.swiper-making', '.swiper-project-1', '.swiper-project-2', '.swiper-project-3', '.swiper-project-4', '.swiper-project-5', '.swiper-steps-1', '.swiper-steps-2', '.swiper-other'];
+
+window.addEventListener('load', () => initSwipers(swiperClasses));
+window.addEventListener('resize', () => initSwipers(swiperClasses));

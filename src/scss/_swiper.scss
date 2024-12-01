@@ -21,25 +21,27 @@
     background: $orange;
 }
 
-.swiper-button-prev,.swiper-button-next {
-    bottom: 0px;
-    right : 70px;
-    top   : auto;
-    left  : auto;
-    width: 46px;
-    height: 46px;
-    display: flex;
-    align-items: center;
+.swiper-button-prev,
+.swiper-button-next {
+    bottom         : 0px;
+    right          : 70px;
+    top            : auto;
+    left           : auto;
+    width          : 46px;
+    height         : 46px;
+    display        : flex;
+    align-items    : center;
     justify-content: center;
-    background: $brown;
-    border-radius: 50%;
-    color: $white;
-    transition: all .3s ease;
+    background     : $brown;
+    border-radius  : 50%;
+    color          : $white;
+    transition     : all .3s ease;
 
     &:after {
         font-weight: 600;
-        font-size: 24px;
+        font-size  : 24px;
     }
+
     &:hover {
         background: $orange;
     }

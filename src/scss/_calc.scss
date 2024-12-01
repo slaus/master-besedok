@@ -1,43 +1,84 @@
 .calc {
     display: block;
-    margin : 30px 0;
-    padding: 20px 0;
+    margin : 35px 0;
+    padding: 50px 0 15px;
 
     &__block {
         display              : grid;
-        grid-template-columns: 60% 30%;
-        gap                  : 30px;
+        grid-template-columns: 67% auto;
         align-items          : center;
+        padding-top          : 5px;
+
+        @media screen and (max-width: $breakpoint1200) {
+            grid-template-columns: 65% auto;
+        }
+
+        @media screen and (max-width: $breakpoint768) {
+            grid-template-columns: 1fr;
+            gap                  : 20px;
+        }
     }
 
     &__params {
         background   : rgba(236, 231, 226, 0.6);
         border       : 2px solid $brown;
         border-radius: 40px;
-        padding      : 5% 10%;
+        padding      : 6% 9%;
+
+        @media screen and (max-width: $breakpoint1450) {
+            padding: 5%;
+        }
+
+        @media screen and (max-width: $breakpoint1200) {
+            padding: 20px;
+        }
     }
 
     &__img {
         width : 100%;
         height: auto;
 
+        @media screen and (max-width: $breakpoint768) {
+            width       : 80%;
+            margin-left : auto;
+            margin-right: auto;
+        }
+
         img {
             width     : 100%;
             height    : 100%;
             object-fit: contain;
+
+
         }
     }
 
     &__form {
         display       : flex;
         flex-direction: column;
-        gap           : 30px;
+        gap           : 40px;
+
+        @media screen and (max-width: $breakpoint1200) {
+            gap: 30px;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            gap: 20px;
+        }
 
         &-param {
             display              : grid;
             grid-template-columns: repeat(4, 1fr);
             gap                  : 20px;
             align-items          : center;
+
+            @media screen and (max-width: $breakpoint1200) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media screen and (max-width: $breakpoint577) {
+                grid-template-columns: repeat(1, 1fr);
+            }
         }
 
         &-inputs {
@@ -45,6 +86,14 @@
             grid-template-columns: repeat(3, 1fr);
             gap                  : 20px;
             align-items          : center;
+
+            @media screen and (max-width: $breakpoint1200) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media screen and (max-width: $breakpoint577) {
+                grid-template-columns: repeat(1, 1fr);
+            }
 
             input {
                 display       : flex;
@@ -56,7 +105,7 @@
                 height        : 44px;
                 border-radius : 40px;
                 border        : 2px solid $brownLight;
-                font-size     : 16px;
+                font-size     : 15px;
                 line-height   : 20px;
                 font-weight   : 500;
                 color         : $black;
@@ -76,6 +125,14 @@
             gap                  : 20px;
             align-items          : flex-start;
 
+            @media screen and (max-width: $breakpoint1200) {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @media screen and (max-width: $breakpoint577) {
+                grid-template-columns: 1fr;
+            }
+
             input {
                 display       : flex;
                 flex-direction: row;
@@ -86,7 +143,7 @@
                 height        : 44px;
                 border-radius : 40px;
                 border        : 2px solid $brownLight;
-                font-size     : 16px;
+                font-size     : 15px;
                 line-height   : 20px;
                 font-weight   : 500;
                 color         : $black;
@@ -101,6 +158,10 @@
 
             &--agree {
                 height: 55px;
+
+                @media screen and (max-width: $breakpoint1450) {
+                    height: auto;
+                }
 
                 p {
                     font-size  : 14px;
@@ -168,27 +229,38 @@
                 line-height: 14px;
                 font-weight: 500;
                 color      : $white;
+
+                @media screen and (max-width: $breakpoint1450) {
+                    font-size: 14px;
+                }
             }
         }
 
         &-selected {
-            position    : absolute;
-            left        : 0;
-            top         : 50%;
-            padding-left: 15px;
-            transform   : translateY(-50%);
-            display     : flex;
-            align-items : center;
-            gap         : 10px;
-            width       : 100%;
-            max-width   : calc(100% - 25px);
-            height      : 44px;
-            font-size   : 15px;
-            line-height : 14px;
-            font-weight : 500;
-            color       : $white;
-            width       : auto;
+            position     : absolute;
+            left         : 0;
+            top          : 50%;
+            padding-left : 15px;
+            padding-right: 20px;
+            transform    : translateY(-50%);
+            display      : flex;
+            align-items  : center;
+            gap          : 10px;
+            width        : 100%;
+            height       : 44px;
+            font-size    : 15px;
+            line-height  : 14px;
+            font-weight  : 500;
+            color        : $white;
             border-radius: 40px;
+
+            @media screen and (max-width: $breakpoint1450) {
+                font-size: 14px;
+            }
+
+            &.selected {
+                background: $red;
+            }
         }
 
         &-dropdown {
@@ -223,7 +295,7 @@
         }
 
         &-dropdown a {
-            padding        : 0 12px;
+            padding        : 0 5px;
             text-decoration: none;
             position       : relative;
             font-size      : 14px;
@@ -231,6 +303,7 @@
             color          : $black;
             transition     : all .3s ease;
             border-bottom  : 1px solid transparent;
+            display        : block;
 
             &:after {
                 content   : "";
@@ -268,6 +341,12 @@
             color          : $white;
             transition     : all .3s ease;
             width          : fit-content;
+
+            @media screen and (max-width: $breakpoint1450) {
+                font-size  : 15px;
+                font-weight: 400;
+                height     : 48px;
+            }
 
             &:hover {
                 background: $orange;

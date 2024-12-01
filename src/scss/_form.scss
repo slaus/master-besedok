@@ -1,9 +1,9 @@
 .form {
     &__inputs {
-        display              : flex;
+        display       : flex;
         flex-direction: column;
-        gap                  : 10px;
-        align-items          : center;
+        gap           : 10px;
+        align-items   : center;
 
         input {
             display       : flex;
@@ -30,10 +30,10 @@
     }
 
     &__comment {
-        display              : flex;
+        display       : flex;
         flex-direction: column;
-        gap                  : 10px;
-        margin-top: 10px;
+        gap           : 10px;
+        margin-top    : 10px;
 
         input {
             display       : flex;
@@ -77,8 +77,9 @@
             }
         }
     }
+
     &__submit {
-        margin-top: 10px;
+        margin-top     : 10px;
         display        : flex;
         flex-direction : row;
         justify-content: center;

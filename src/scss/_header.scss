@@ -2,23 +2,49 @@
     height    : 110px;
     background: $white;
 
+    @media screen and (max-width: $breakpoint1450) {
+        height: 80px;
+    }
+
     &__block {
         height         : 110px;
         display        : flex;
         justify-content: space-between;
         align-items    : center;
         gap            : 25px;
+
+        @media screen and (max-width: $breakpoint1450) {
+            height: 80px;
+        }
     }
 
     &__logo {
         margin-right  : auto;
         display       : flex;
-        gap           : 10px;
+        gap           : 5px;
         align-items   : center;
         font-size     : 16px;
         font-weight   : 500;
         color         : $black;
         text-transform: uppercase;
+
+        @media screen and (max-width: $breakpoint1450) {
+            font-size: 15px;
+        }
+
+        @media screen and (max-width: $breakpoint1200) {
+            order: -2;
+
+            span {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: $breakpoint768) {
+            img {
+                width: 40px;
+            }
+        }
     }
 
     &__email {
@@ -29,6 +55,10 @@
             font-size  : 16px;
             font-weight: 500;
             color      : $black;
+
+            @media screen and (max-width: $breakpoint1450) {
+                font-size: 15px;
+            }
 
             img {
                 transition: all .1s ease;
@@ -41,6 +71,12 @@
                     filter: invert(66%) sepia(58%) saturate(3211%) hue-rotate(338deg) brightness(98%) contrast(106%);
                 }
             }
+
+            span {
+                @media screen and (max-width: $breakpoint1200) {
+                    display: none;
+                }
+            }
         }
 
         img {
@@ -51,6 +87,11 @@
     }
 
     &__phone {
+        @media screen and (max-width: $breakpoint1200) {
+            order       : -1;
+            margin-right: auto;
+        }
+
         a {
             display    : flex;
             gap        : 10px;
@@ -58,6 +99,10 @@
             font-size  : 16px;
             font-weight: 500;
             color      : $black;
+
+            @media screen and (max-width: $breakpoint1450) {
+                font-size: 15px;
+            }
 
             img {
                 transition: all .1s ease;
@@ -88,8 +133,18 @@
             font-weight: 500;
             color      : $black;
 
+            @media screen and (max-width: $breakpoint1450) {
+                font-size: 15px;
+            }
+
             &:hover {
                 color: $orange;
+            }
+
+            span {
+                @media screen and (max-width: $breakpoint1200) {
+                    display: none;
+                }
             }
         }
 
@@ -101,13 +156,26 @@
     }
 
     &__rating {
+        @media screen and (max-width: $breakpoint1200) {
+            display: none;
+        }
+
         a {
             display    : flex;
             align-items: center;
+
+            img {
+                @media screen and (max-width: $breakpoint1450) {
+                    width: 90%;
+                }
+            }
         }
     }
 
     &__search {
+        @media screen and (max-width: $breakpoint1200) {
+            display: none;
+        }
 
         &-block {
             height         : 48px;
@@ -126,7 +194,7 @@
                 background     : url("../img/icon-search.svg") center center no-repeat;
                 background-size: contain;
                 z-index        : 1;
-                transition: all .1s ease;
+                transition     : all .1s ease;
             }
 
             &:hover {
@@ -160,14 +228,14 @@
             top          : 0;
             width        : 100%;
             background   : $white;
-            transition: all .3s ease;
+            transition   : all .3s ease;
 
             &--input {
                 display   : flex;
                 width     : 0;
-                height: 100%;
+                height    : 100%;
                 transition: all .3s ease;
-                outline: none;
+                outline   : none;
             }
 
             &--btn {
