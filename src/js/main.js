@@ -49,6 +49,23 @@ searchInput.addEventListener("click", (e) => {
 
 
 
+/** Calc */
+const dropdowns = document.querySelectorAll('.calc__form-dropdown');
+
+  dropdowns.forEach((dropdown) => {
+    dropdown.addEventListener('click', (event) => {
+      event.preventDefault();
+      const target = event.target;
+      const group = target.closest('.calc__form-group');
+
+      if (target.tagName === 'A') {
+        const selectedText = group.querySelector('.calc__form-selected');
+        selectedText.textContent = target.getAttribute('data-value');
+        group.querySelector("span").style.display = 'none';
+      }
+    });
+  });
+
 
 /** Модальное окно */
 const getScrollbarWidth = () => {

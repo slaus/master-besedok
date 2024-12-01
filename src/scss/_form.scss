@@ -1,0 +1,101 @@
+.form {
+    &__inputs {
+        display              : flex;
+        flex-direction: column;
+        gap                  : 10px;
+        align-items          : center;
+
+        input {
+            display       : flex;
+            flex-direction: row;
+            align-items   : center;
+            padding       : 12px 24px;
+            gap           : 10px;
+            width         : 100%;
+            height        : 44px;
+            border-radius : 40px;
+            border        : 2px solid $brownLight;
+            font-size     : 16px;
+            line-height   : 20px;
+            font-weight   : 500;
+            color         : $black;
+            transition    : all .3s ease;
+
+            &:focus,
+            &:focus-visible {
+                border : 2px solid $brown;
+                outline: none;
+            }
+        }
+    }
+
+    &__comment {
+        display              : flex;
+        flex-direction: column;
+        gap                  : 10px;
+        margin-top: 10px;
+
+        input {
+            display       : flex;
+            flex-direction: row;
+            align-items   : center;
+            padding       : 12px 24px;
+            gap           : 10px;
+            width         : 100%;
+            height        : 44px;
+            border-radius : 40px;
+            border        : 2px solid $brownLight;
+            font-size     : 16px;
+            line-height   : 20px;
+            font-weight   : 500;
+            color         : $black;
+            transition    : all .3s ease;
+
+            &:focus,
+            &:focus-visible {
+                border : 2px solid $brown;
+                outline: none;
+            }
+        }
+
+        &-agree {
+
+            p {
+                font-size  : 12px;
+                line-height: 16px;
+
+                a {
+                    color        : $black;
+                    border-bottom: 1px solid $black;
+                    transition   : all .3s ease;
+
+                    &:hover {
+                        border-bottom: 1px dashed $brown;
+                        color        : $brown;
+                    }
+                }
+            }
+        }
+    }
+    &__submit {
+        margin-top: 10px;
+        display        : flex;
+        flex-direction : row;
+        justify-content: center;
+        align-items    : center;
+        padding        : 16px 24px;
+        height         : 52px;
+        background     : $brown;
+        border-radius  : 8px;
+        font-size      : 16px;
+        line-height    : 20px;
+        font-weight    : 500;
+        color          : $white;
+        transition     : all .3s ease;
+        width          : fit-content;
+
+        &:hover {
+            background: $orange;
+        }
+    }
+}

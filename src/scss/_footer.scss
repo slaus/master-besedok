@@ -2,7 +2,7 @@
     display   : block;
     background: $brown;
     color     : $white;
-    padding   : 50px 0;
+    padding   : 50px 0 30px;
 
     // height    : 596px;
     @media screen and (max-width: $breakpoint1450) {
@@ -11,89 +11,143 @@
 
     &__block {
         display              : grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap                  : 30px;
 
-        @media screen and (max-width: $breakpoint1450) {
-            gap: 20px;
-        }
+        // @media screen and (max-width: $breakpoint1450) {
+        //     gap: 20px;
+        // }
 
-        @media screen and (max-width: $breakpoint992) {
-            grid-template-columns: repeat(2, 1fr);
-        }
+        // @media screen and (max-width: $breakpoint992) {
+        //     grid-template-columns: repeat(2, 1fr);
+        // }
 
-        @media screen and (max-width: $breakpoint577) {
-            grid-template-columns: repeat(1, 1fr);
-            text-align           : center;
-        }
+        // @media screen and (max-width: $breakpoint577) {
+        //     grid-template-columns: repeat(1, 1fr);
+        //     text-align           : center;
+        // }
+    }
+
+    &__container {
+        border-top: 1px solid $white;
+        margin-top: 25px;
     }
 
     &__item {
-        &--title {
-            line-height  : 25px;
-            font-weight  : 700;
-            font-size    : 22px;
+
+        &-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width     : fit-content;
+            text-align: center;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            text-transform: uppercase;
+            color: $white;
+            transition: all .3s ease;
+            
+            img {
+                transition: all .3s ease;
+            }
+
+            &:hover {
+                color: $white;
+
+                img {
+                    filter: invert(83%) sepia(100%) saturate(4%) hue-rotate(154deg) brightness(209%) contrast(100%);
+                }
+            }
+        }
+
+        &-title {
+            line-height  : 20px;
+            font-weight  : 500;
+            font-size    : 16px;
             color        : $white;
             margin-top   : 20px;
             margin-bottom: 15px;
 
-            @media screen and (max-width: $breakpoint1450) {
-                font-size: 21px;
-            }
+            // @media screen and (max-width: $breakpoint1450) {
+            //     font-size: 21px;
+            // }
 
-            @media screen and (max-width: $breakpoint1200) {
-                font-size: 19px;
-            }
+            // @media screen and (max-width: $breakpoint1200) {
+            //     font-size: 19px;
+            // }
 
-            @media screen and (max-width: $breakpoint577) {
-                font-size : 18px;
-                margin-top: 10px;
-            }
+            // @media screen and (max-width: $breakpoint577) {
+            //     font-size : 18px;
+            //     margin-top: 10px;
+            // }
         }
 
-        &--list {
-            font-weight  : 400;
-            font-size    : 18px;
-            line-height  : 31px;
+        &-list {
+            font-size    : 14px;
+            line-height  : 20px;
             color        : $white;
-            padding-left : 10px;
             margin-bottom: 30px;
 
-            @media screen and (max-width: $breakpoint1200) {
-                font-size  : 16px;
-                line-height: 26px;
+            // @media screen and (max-width: $breakpoint1200) {
+            //     font-size  : 16px;
+            //     line-height: 26px;
+            // }
+
+            // @media screen and (max-width: $breakpoint577) {
+            //     padding-left: 0;
+            // }
+
+            // @media screen and (max-width: $breakpoint577) {
+            //     margin-bottom: 0;
+            //     font-size    : 14px;
+            //     line-height  : 16px;
+
+            //     li+li {
+            //         margin-top: 8px;
+            //     }
+            // }
+
+            span {
+                padding-left: 10px;
+                display     : block;
+                margin-top  : 20px;
             }
-
-            @media screen and (max-width: $breakpoint577) {
-                padding-left: 0;
-            }
-
-            @media screen and (max-width: $breakpoint577) {
-                margin-bottom: 0;
-                font-size    : 14px;
-                line-height  : 16px;
-
-                li+li {
-                    margin-top: 8px;
-                }
-            }
-
-            li {}
 
             a {
-                color: $white;
+                color      : $white;
+                display    : inline-block;
+                padding    : 0 10px;
+                position   : relative;
+                line-height: 26px;
+
+                &:after {
+                    content   : "";
+                    display   : block;
+                    width     : 0;
+                    height    : 1px;
+                    background: $white;
+                    position  : absolute;
+                    bottom    : 0;
+                    left      : 0;
+                    transition: all .3s ease;
+                    opacity   : 0;
+                }
 
                 &:hover {
-                    color: $orange;
+                    &:after {
+                        width  : 100%;
+                        opacity: 1;
+                    }
                 }
             }
         }
 
-        &--raiting {
+        &-rating {
             margin-top: 30px;
         }
 
-        &--social {
+        &-social {
             margin-top : 50px;
             display    : flex;
             height     : 30px;
@@ -125,7 +179,7 @@
     }
 
     &__copyright {
-        margin-top: 50px;
+        margin-top: 30px;
 
         @media screen and (max-width: $breakpoint992) {
             margin-top: 40px;
@@ -135,31 +189,53 @@
             text-align: center;
         }
 
-        &--text {
+        &-text {
             padding-left: 10px;
             height      : 36px;
-            font-size   : 18px;
-            line-height : 22px;
-            color       : $brown;
+            font-size   : 14px;
+            line-height : 20px;
+            color       : $white;
+            display     : flex;
+            align-items : center;
 
-            @media screen and (max-width: $breakpoint1200) {
-                font-size  : 16px;
-                line-height: 20px;
-            }
+            // @media screen and (max-width: $breakpoint1200) {
+            //     font-size  : 16px;
+            //     line-height: 20px;
+            // }
 
-            @media screen and (max-width: $breakpoint992) {
-                padding-left: 0;
-            }
+            // @media screen and (max-width: $breakpoint992) {
+            //     padding-left: 0;
+            // }
 
-            @media screen and (max-width: $breakpoint577) {
-                font-size: 14px;
-            }
+            // @media screen and (max-width: $breakpoint577) {
+            //     font-size: 14px;
+            // }
 
             a {
-                color: $brown;
+                color      : $white;
+                display    : inline-block;
+                padding    : 0 5px;
+                position   : relative;
+                line-height: 26px;
+
+                &:after {
+                    content   : "";
+                    display   : block;
+                    width     : 0;
+                    height    : 1px;
+                    background: $white;
+                    position  : absolute;
+                    bottom    : 0;
+                    left      : 0;
+                    transition: all .3s ease;
+                    opacity   : 0;
+                }
 
                 &:hover {
-                    color: $orange;
+                    &:after {
+                        width  : 100%;
+                        opacity: 1;
+                    }
                 }
             }
         }

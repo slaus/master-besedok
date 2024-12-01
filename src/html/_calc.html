@@ -3,6 +3,73 @@
         <h3 class="calc__title">
             Рассчитать изготовление беседки по индивидуальным размерам
         </h3>
-        <div class="calc__block">calc</div>
+        <div class="calc__block">
+            <div class="calc__params">
+                <form id="calculator-form" class="calc__form">
+                    <div class="calc__form-param">
+                        <div class="calc__form-group">
+                            <p class="calc__form-selected"></p>
+                            <span>Материал</span>
+                            <div class="calc__form-dropdown">
+                                <a href="#" data-value="Брус">Брус</a>
+                                <a href="#" data-value="Оцилиндрованное бревно">Оцилиндрованное бревно</a>
+                                <a href="#" data-value="Клееный брус">Клееный брус</a>
+                                <a href="#" data-value="Lego-кирпич">Lego-кирпич</a>
+                            </div>
+                        </div>
+                        <div class="calc__form-group">
+                            <p class="calc__form-selected"></p>
+                            <span>Форма крыши</span>
+                            <div class="calc__form-dropdown">
+                                <a href="#" data-value="Односкатная">Односкатная</a>
+                                <a href="#" data-value="Двускатная">Двускатная</a>
+                                <a href="#" data-value="Купольная">Купольная</a>
+                                <a href="#" data-value="Многощипцовая">Многощипцовая</a>
+                            </div>
+                        </div>
+                        <div class="calc__form-group">
+                            <p class="calc__form-selected"></p>
+                            <span>Площадь</span>
+                            <div class="calc__form-dropdown">
+                                <a href="#" data-value="до 8 м2">до 8 м2</a>
+                                <a href="#" data-value="8-12 м2">8-12 м2</a>
+                                <a href="#" data-value="12-16 м2">12-16 м2</a>
+                                <a href="#" data-value="16-20 м2">16-20 м2</a>
+                                <a href="#" data-value="более 20 м2">более 20 м2</a>
+                            </div>
+                        </div>
+                        <div class="calc__form-group">
+                            <p class="calc__form-selected"></p>
+                            <span>Фундамент</span>
+                            <div class="calc__form-dropdown">
+                                <a href="#" data-value="Фундаментные блоки">Фундаментные блоки</a>
+                                <a href="#" data-value="Сваи">Сваи</a>
+                                <a href="#" data-value="Каменная плита">Каменная плита</a>
+                                <a href="#" data-value="Монолитная плита">Монолитная плита</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calc__form-inputs">
+                        <input type="text" placeholder="Имя *" required="required" name="name">
+                        <input type="text" placeholder="Телефон *" id="phone_cons" required="required" name="phone">
+                        <input type="email" placeholder="E-mail" name="email">
+                    </div>
+                    <div class="calc__form-comment">
+                        <div>
+                            <input type="text" name="text" placeholder="Комментарий">
+                        </div>
+                        <div class="calc__form-comment--agree">
+                            <p>* Если пока не решили с тем или иным параметром, просто пропустите его.</p>
+                            <p>Нажимая на кнопку "Отправить", Я соглашаюсь с условиями <a href=""
+                                    target="__blank">пользовательского соглашения</a>.</p>
+                        </div>
+                        <button class="calc__form-submit" type="submit">Отправить</button>
+                    </div>
+                </form>
+            </div>
+            <div class="calc__img">
+                <img src="img/calc.png" alt="img">
+            </div>
+        </div>
     </div>
 </section>

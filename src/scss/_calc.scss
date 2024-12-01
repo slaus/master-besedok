@@ -1,3 +1,277 @@
 .calc {
     display: block;
+    margin : 30px 0;
+    padding: 20px 0;
+
+    &__block {
+        display              : grid;
+        grid-template-columns: 60% 30%;
+        gap                  : 30px;
+        align-items          : center;
+    }
+
+    &__params {
+        background   : rgba(236, 231, 226, 0.6);
+        border       : 2px solid $brown;
+        border-radius: 40px;
+        padding      : 5% 10%;
+    }
+
+    &__img {
+        width : 100%;
+        height: auto;
+
+        img {
+            width     : 100%;
+            height    : 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__form {
+        display       : flex;
+        flex-direction: column;
+        gap           : 30px;
+
+        &-param {
+            display              : grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap                  : 20px;
+            align-items          : center;
+        }
+
+        &-inputs {
+            display              : grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap                  : 20px;
+            align-items          : center;
+
+            input {
+                display       : flex;
+                flex-direction: row;
+                align-items   : center;
+                padding       : 12px 24px;
+                gap           : 10px;
+                width         : 100%;
+                height        : 44px;
+                border-radius : 40px;
+                border        : 2px solid $brownLight;
+                font-size     : 16px;
+                line-height   : 20px;
+                font-weight   : 500;
+                color         : $black;
+                transition    : all .3s ease;
+
+                &:focus,
+                &:focus-visible {
+                    border : 2px solid $brown;
+                    outline: none;
+                }
+            }
+        }
+
+        &-comment {
+            display              : grid;
+            grid-template-columns: auto calc(33.3333% - 13px);
+            gap                  : 20px;
+            align-items          : flex-start;
+
+            input {
+                display       : flex;
+                flex-direction: row;
+                align-items   : center;
+                padding       : 12px 24px;
+                gap           : 10px;
+                width         : 100%;
+                height        : 44px;
+                border-radius : 40px;
+                border        : 2px solid $brownLight;
+                font-size     : 16px;
+                line-height   : 20px;
+                font-weight   : 500;
+                color         : $black;
+                transition    : all .3s ease;
+
+                &:focus,
+                &:focus-visible {
+                    border : 2px solid $brown;
+                    outline: none;
+                }
+            }
+
+            &--agree {
+                height: 55px;
+
+                p {
+                    font-size  : 14px;
+                    line-height: 18px;
+
+                    a {
+                        color        : $black;
+                        border-bottom: 1px solid $black;
+                        transition   : all .3s ease;
+
+                        &:hover {
+                            border-bottom: 1px dashed $brown;
+                            color        : $brown;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-group {
+            position     : relative;
+            display      : flex;
+            align-items  : center;
+            gap          : 10px;
+            width        : 100%;
+            max-width    : 100%;
+            height       : 44px;
+            background   : $brown;
+            border-radius: 40px;
+            color        : $white;
+            cursor       : pointer;
+            padding-left : 15px;
+
+            &:hover {
+                background: $orange;
+                transition: all .3s ease;
+
+                &:after {
+                    transform: rotate(180deg);
+                }
+            }
+
+            &:after {
+                content        : "";
+                display        : flex;
+                width          : 20px;
+                height         : 20px;
+                background     : url("../img/icon-arrow-down.svg") center center no-repeat;
+                background-size: contain;
+                transition     : all .4s ease;
+                position       : absolute;
+                right          : 5px;
+                top            : 12px;
+                filter         : invert(100%) sepia(0%) saturate(0%) hue-rotate(88deg) brightness(101%) contrast(102%);
+            }
+
+            span {
+                display    : flex;
+                align-items: center;
+                gap        : 10px;
+                width      : 100%;
+                max-width  : 100%;
+                height     : 44px;
+                font-size  : 15px;
+                line-height: 14px;
+                font-weight: 500;
+                color      : $white;
+            }
+        }
+
+        &-selected {
+            position    : absolute;
+            left        : 0;
+            top         : 50%;
+            padding-left: 15px;
+            transform   : translateY(-50%);
+            display     : flex;
+            align-items : center;
+            gap         : 10px;
+            width       : 100%;
+            max-width   : calc(100% - 25px);
+            height      : 44px;
+            font-size   : 15px;
+            line-height : 14px;
+            font-weight : 500;
+            color       : $white;
+            width       : auto;
+            border-radius: 40px;
+        }
+
+        &-dropdown {
+            position      : absolute;
+            z-index       : 1;
+            position      : absolute;
+            display       : flex;
+            flex-direction: column;
+            gap           : 5px;
+            left          : 0;
+            top           : 100%;
+            min-width     : 100%;
+            width         : max-content;
+            background    : $brownLight;
+            box-shadow    : none;
+            z-index       : -2;
+            opacity       : 0;
+            border-radius : 8px;
+            overflow      : hidden;
+            border-top    : 3px solid $white;
+            transition    : all .5s ease;
+            transform     : translateY(100px);
+            padding       : 10px;
+        }
+
+        &-group:hover &-dropdown {
+            display   : flex;
+            z-index   : 1;
+            opacity   : 1;
+            transform : translateY(0px);
+            box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+        }
+
+        &-dropdown a {
+            padding        : 0 12px;
+            text-decoration: none;
+            position       : relative;
+            font-size      : 14px;
+            line-height    : 26px;
+            color          : $black;
+            transition     : all .3s ease;
+            border-bottom  : 1px solid transparent;
+
+            &:after {
+                content   : "";
+                display   : block;
+                width     : 0;
+                height    : 1px;
+                background: $black;
+                position  : absolute;
+                bottom    : 0;
+                left      : 0;
+                transition: all .3s ease;
+                opacity   : 0;
+            }
+        }
+
+        &-dropdown a:hover {
+            &:after {
+                width  : 100%;
+                opacity: 1;
+            }
+        }
+
+        &-submit {
+            display        : flex;
+            flex-direction : row;
+            justify-content: center;
+            align-items    : center;
+            padding        : 16px 24px;
+            height         : 52px;
+            background     : $brown;
+            border-radius  : 8px;
+            font-size      : 16px;
+            line-height    : 20px;
+            font-weight    : 500;
+            color          : $white;
+            transition     : all .3s ease;
+            width          : fit-content;
+
+            &:hover {
+                background: $orange;
+            }
+        }
+    }
 }
