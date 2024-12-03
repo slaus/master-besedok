@@ -1,16 +1,18 @@
 .slider {
-    height       : calc(100vh - 210px);
+    // height       : calc(100vh - 210px);
+    height       : 750px;
     width        : 100%;
     position     : relative;
-    margin-bottom: 70px;
     z-index: 0;
 
     @media screen and (max-width: $breakpoint1450) {
-        height: calc(100vh - 160px);
+        // height: calc(100vh - 160px);
+        height: 650px;
     }
 
     @media screen and (max-width: $breakpoint768) {
-        height: calc(100vh - 120px);
+        // height: calc(100vh - 120px);
+        height: 550px;
     }
 
     &__bg {
@@ -42,14 +44,17 @@
 
     & &__wrapper {
         width : 100%;
-        height: calc(100vh - 210px);
+        // height: calc(100vh - 210px);
+        height: 750px;
 
         @media screen and (max-width: $breakpoint1450) {
-            height: calc(100vh - 160px);
+            // height: calc(100vh - 160px);
+            height: 650px;
         }
 
         @media screen and (max-width: $breakpoint768) {
-            height: calc(100vh - 120px);
+            // height: calc(100vh - 120px);
+            height: 550px;
         }
     }
 

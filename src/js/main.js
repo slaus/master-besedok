@@ -42,10 +42,6 @@ catalog.addEventListener("click", (e) => {
   menu.classList.toggle("active");
 });
 
-document.querySelector(".submenu__search-form--input").addEventListener("click", (e) => {
-  e.stopPropagation();
-});
-
 const catalogItems = document.querySelectorAll('.catalog__item-parent');
 
 catalogItems.forEach((item) => {
@@ -93,7 +89,6 @@ catalogItems.forEach((item) => {
     });
   });
 });
-
 
 
 
@@ -246,10 +241,10 @@ const swiperSlider = new Swiper('.swiper-slider', {
     delay: 15000,
     disableOnInteraction: false,
   },
-  // pagination: {
-  //   el: '.swiper-pagination',
-  //   clickable: true,
-  // },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
   keyboard: {
     enabled: true,
   },
@@ -385,7 +380,7 @@ const swiperVideo = new Swiper('.swiper-video', {
 });
 
 const swiperCert = new Swiper('.swiper-cert', {
-  slidesPerView: 1,
+  slidesPerView: 2,
   spaceBetween: 10,
   loop: true,
   mousewheel: false,
@@ -428,7 +423,7 @@ const swiperCert = new Swiper('.swiper-cert', {
 });
 
 const swiperTerms = new Swiper('.swiper-gerb', {
-  slidesPerView: 1,
+  slidesPerView: 2,
   spaceBetween: 10,
   loop: true,
   mousewheel: false,
@@ -545,29 +540,34 @@ window.addEventListener('resize', () => initSwipers(swiperClasses));
 
 
 /** Phone mask */
-document.getElementById("phone_cons").addEventListener("input", function (e) {
-  let input = e.target;
-  let value = input.value.replace(/\D/g, "");
+const phoneMask = (trigger) => {
+  document.querySelector(trigger).addEventListener("input", function (e) {
+    let input = e.target;
+    let value = input.value.replace(/\D/g, "");
 
-  if (value === "") {
-    input.value = "";
-    return;
-  }
+    if (value === "") {
+      input.value = "";
+      return;
+    }
 
-  let formattedValue = "+7 (";
+    let formattedValue = "+7 (";
 
-  if (value.length > 1) {
-    formattedValue += value.substring(1, 4);
-  }
-  if (value.length >= 5) {
-    formattedValue += ") " + value.substring(4, 7);
-  }
-  if (value.length >= 8) {
-    formattedValue += "-" + value.substring(7, 9);
-  }
-  if (value.length >= 10) {
-    formattedValue += "-" + value.substring(9, 11);
-  }
+    if (value.length > 1) {
+      formattedValue += value.substring(1, 4);
+    }
+    if (value.length >= 5) {
+      formattedValue += ") " + value.substring(4, 7);
+    }
+    if (value.length >= 8) {
+      formattedValue += "-" + value.substring(7, 9);
+    }
+    if (value.length >= 10) {
+      formattedValue += "-" + value.substring(9, 11);
+    }
 
-  input.value = formattedValue;
-});
+    input.value = formattedValue;
+  });
+};
+
+phoneMask("#phone_cons");
+phoneMask("#phone_modal");

@@ -47,16 +47,6 @@
     }
 }
 
-
-.swiper-button-prev {
-    @media screen and (max-width: $breakpoint577) {
-        left: calc(50% - 55px);
-    }
-}
-
 .swiper-button-next {
     right: 10px;
-    @media screen and (max-width: $breakpoint577) {
-        right: calc(50% - 55px);
-    }
 }
