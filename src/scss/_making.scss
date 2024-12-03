@@ -8,8 +8,13 @@
     }
 
     @media screen and (max-width: $breakpoint1450) {
-        padding: 50px 0 30px;
-        margin : 50px 0 30px;
+        padding: 30px 0;
+        margin : 30px 0;
+    }
+
+    @media screen and (max-width: $breakpoint768) {
+        padding: 20px 0;
+        margin : 20px 0;
     }
 
     &__block {
@@ -60,6 +65,13 @@
         @media screen and (max-width: $breakpoint1200) {
             margin-bottom: 10px;
             min-height   : 200px;
+        }
+
+        @media screen and (max-width: $breakpoint992) {
+            max-width   : 450px;
+            width       : 100%;
+            margin-left : auto;
+            margin-right: auto;
         }
 
         &-icon {

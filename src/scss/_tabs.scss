@@ -32,14 +32,12 @@
         }
 
         @media screen and (max-width: $breakpoint768) {
-            flex-wrap : wrap;
-            padding   : 5px;
-            background: transparent;
+            flex-wrap: wrap;
+            padding  : 5px;
         }
 
-
-        @media (max-width: 768px) {
-            flex-wrap: wrap;
+        @media screen and (max-width: $breakpoint577) {
+            background: transparent;
         }
 
         &-item {
@@ -71,6 +69,7 @@
             @media screen and (max-width: $breakpoint768) {
                 font-size: 14px;
                 padding  : 5px 15px;
+                height: 40px;
             }
 
             &:hover {

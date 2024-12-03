@@ -95,6 +95,18 @@
         transition     : all .3s ease;
         width          : fit-content;
 
+        @media screen and (max-width: $breakpoint1200) {
+            height: 48px;
+        }
+
+        @media screen and (max-width: $breakpoint992) {
+            height: 44px;
+        }
+
+        @media screen and (max-width: $breakpoint768) {
+            height: 40px;
+        }
+
         &:hover {
             background: $orange;
         }

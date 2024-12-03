@@ -6,6 +6,10 @@
         height: 80px;
     }
 
+    @media screen and (max-width: $breakpoint768) {
+        height: 72px;
+    }
+
     &__block {
         height         : 110px;
         display        : flex;
@@ -16,10 +20,13 @@
         @media screen and (max-width: $breakpoint1450) {
             height: 80px;
         }
+
+        @media screen and (max-width: $breakpoint768) {
+            height: 72px;
+        }
     }
 
     &__logo {
-        margin-right  : auto;
         display       : flex;
         gap           : 5px;
         align-items   : center;
@@ -42,12 +49,18 @@
 
         @media screen and (max-width: $breakpoint768) {
             img {
-                width: 40px;
+                width: 60px;
             }
         }
     }
 
     &__email {
+        margin-left: auto;
+
+        @media screen and (max-width: $breakpoint992) {
+            display: none;
+        }
+
         a {
             display    : flex;
             gap        : 10px;
@@ -90,6 +103,7 @@
         @media screen and (max-width: $breakpoint1200) {
             order       : -1;
             margin-right: auto;
+            margin-left : auto;
         }
 
         a {
@@ -125,6 +139,9 @@
     }
 
     &__whatsapp {
+        @media screen and (max-width: $breakpoint992) {
+            padding-right: 70px;
+        }
         a {
             display    : flex;
             gap        : 10px;
@@ -173,7 +190,7 @@
     }
 
     &__search {
-        @media screen and (max-width: $breakpoint1200) {
+        @media screen and (max-width: $breakpoint992) {
             display: none;
         }
 

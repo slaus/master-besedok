@@ -5,27 +5,96 @@ const burgerMenu = () => {
   const body = document.querySelector('body');
 
   burger.addEventListener('click', () => {
-      if (!menu.classList.contains('active')) {
-          menu.classList.add('active');
-          burger.classList.add('active');
-          body.classList.add('locked');
-      } else {
-          menu.classList.remove('active');
-          burger.classList.remove('active');
-          body.classList.remove('locked');
-      }
+    if (!menu.classList.contains('active')) {
+      menu.classList.add('active');
+      burger.classList.add('active');
+      body.classList.add('locked');
+      body.classList.add('open');
+    } else {
+      menu.classList.remove('active');
+      burger.classList.remove('active');
+      body.classList.remove('locked');
+      body.classList.remove('open');
+    }
   });
 
   window.addEventListener('resize', () => {
-      if (window.innerWidth > 991) {
-          menu.classList.remove('active');
-          burger.classList.remove('active');
-          body.classList.remove('locked');
-      }
+    if (window.innerWidth > 991) {
+      menu.classList.remove('active');
+      burger.classList.remove('active');
+      body.classList.remove('locked');
+      body.classList.remove('open');
+    }
   });
 };
 
 burgerMenu();
+
+
+
+/** Catalog menu */
+const catalog = document.querySelector("#catalog");
+const menu = document.querySelector(".catalog__menu");
+
+catalog.addEventListener("click", (e) => {
+  e.preventDefault();
+  catalog.classList.toggle("active");
+  menu.classList.toggle("active");
+});
+
+document.querySelector(".submenu__search-form--input").addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+const catalogItems = document.querySelectorAll('.catalog__item-parent');
+
+catalogItems.forEach((item) => {
+  const link = item.querySelector('a.catalog__item-link');
+  const span = item.querySelector('a.catalog__item-link span');
+
+  if (span) {
+    span.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const submenu = item.querySelector('.submenu');
+
+      if (submenu.classList.contains('active')) {
+        submenu.classList.remove('active');
+        item.classList.remove('active');
+      } else {
+        catalogItems.forEach((otherItem) => {
+          const otherSubmenu = otherItem.querySelector('.submenu');
+          if (otherSubmenu) {
+            otherSubmenu.classList.remove('active');
+          }
+          otherItem.classList.remove('active');
+        });
+
+        submenu.classList.add('active');
+        item.classList.add('active');
+      }
+    });
+  }
+
+  link.addEventListener('click', (e) => {
+    if (e.target === span) {
+      e.preventDefault();
+    } else {
+      window.location.href = link.href;
+    }
+  });
+
+  const submenuLinks = item.querySelectorAll('.submenu__item-link');
+  submenuLinks.forEach((submenuLink) => {
+    submenuLink.addEventListener('click', (e) => {
+      e.stopPropagation();
+      window.location.href = submenuLink.href;
+    });
+  });
+});
+
+
 
 
 /** Search */
@@ -52,20 +121,20 @@ searchInput.addEventListener("click", (e) => {
 /** Calc */
 const dropdowns = document.querySelectorAll('.calc__form-dropdown');
 
-  dropdowns.forEach((dropdown) => {
-    dropdown.addEventListener('click', (event) => {
-      event.preventDefault();
-      const target = event.target;
-      const group = target.closest('.calc__form-group');
+dropdowns.forEach((dropdown) => {
+  dropdown.addEventListener('click', (event) => {
+    event.preventDefault();
+    const target = event.target;
+    const group = target.closest('.calc__form-group');
 
-      if (target.tagName === 'A') {
-        const selectedText = group.querySelector('.calc__form-selected');
-        selectedText.textContent = target.getAttribute('data-value');
-        selectedText.classList.add("selected");
-        group.querySelector("span").style.display = 'none';
-      }
-    });
+    if (target.tagName === 'A') {
+      const selectedText = group.querySelector('.calc__form-selected');
+      selectedText.textContent = target.getAttribute('data-value');
+      selectedText.classList.add("selected");
+      group.querySelector("span").style.display = 'none';
+    }
   });
+});
 
 
 /** Модальное окно */
@@ -126,44 +195,44 @@ bindModal('.callback', '#callback-modal', '#callback-close');
 
 
 /** Tabs */
-const tabs = (headerSelector, tabSelector, contentSelector, activeClass, display='grid') => {
+const tabs = (headerSelector, tabSelector, contentSelector, activeClass, display = 'grid') => {
   const header = document.querySelector(headerSelector),
-        tab = document.querySelectorAll(tabSelector),
-        content = document.querySelectorAll(contentSelector);
-  
-        const hideTabContent = () => {
-      content.forEach(item => {
-          item.style.display = 'none';
-      });
-      tab.forEach(item => {
-          item.classList.remove(activeClass);
-      });
+    tab = document.querySelectorAll(tabSelector),
+    content = document.querySelectorAll(contentSelector);
+
+  const hideTabContent = () => {
+    content.forEach(item => {
+      item.style.display = 'none';
+    });
+    tab.forEach(item => {
+      item.classList.remove(activeClass);
+    });
   };
 
   const showTabContent = (i = 0) => {
-     content[i].style.display = display;
-     tab[i].classList.add(activeClass);
+    content[i].style.display = display;
+    tab[i].classList.add(activeClass);
   };
 
   hideTabContent();
   showTabContent();
-  
+
   header.addEventListener('click', e => {
-      const target = e.target;
-      if (target.classList.contains(tabSelector.replace(/\./, '')) || 
+    const target = e.target;
+    if (target.classList.contains(tabSelector.replace(/\./, '')) ||
       target.parentNode.classList.contains(tabSelector.replace(/\./, ''))) {
-          tab.forEach((item, i) => {
-              if ( target == item || target.parentNode == item ) {
-                  hideTabContent();
-                  showTabContent(i);
-              }
-          });
-      };
+      tab.forEach((item, i) => {
+        if (target == item || target.parentNode == item) {
+          hideTabContent();
+          showTabContent(i);
+        }
+      });
+    };
   });
 };
 
-tabs( '.projects__buttons' ,'.projects__buttons-item', '.projects__block', 'active');
-tabs( '.steps__buttons' ,'.steps__buttons-item', '.steps__block', 'active');
+tabs('.projects__buttons', '.projects__buttons-item', '.projects__block', 'active');
+tabs('.steps__buttons', '.steps__buttons-item', '.steps__block', 'active');
 
 
 
@@ -177,10 +246,10 @@ const swiperSlider = new Swiper('.swiper-slider', {
     delay: 15000,
     disableOnInteraction: false,
   },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
+  // pagination: {
+  //   el: '.swiper-pagination',
+  //   clickable: true,
+  // },
   keyboard: {
     enabled: true,
   },
@@ -214,7 +283,7 @@ const swiperBest = new Swiper('.swiper-best', {
       slidesPerView: 1,
       spaceBetween: 10
     },
-    577: {
+    768: {
       slidesPerView: 2,
       spaceBetween: 10
     },
@@ -257,7 +326,7 @@ const swiperIndividual = new Swiper('.swiper-individual', {
       slidesPerView: 1,
       spaceBetween: 10
     },
-    577: {
+    768: {
       slidesPerView: 2,
       spaceBetween: 10
     },
@@ -300,7 +369,7 @@ const swiperVideo = new Swiper('.swiper-video', {
       slidesPerView: 1,
       spaceBetween: 10
     },
-    577: {
+    768: {
       slidesPerView: 2,
       spaceBetween: 10
     },
@@ -446,7 +515,7 @@ function initSwipers(swiperSelectors) {
               slidesPerView: 1,
               spaceBetween: 10,
             },
-            577: {
+            768: {
               slidesPerView: 2,
               spaceBetween: 10,
             },
@@ -473,3 +542,32 @@ const swiperClasses = ['.swiper-making', '.swiper-project-1', '.swiper-project-2
 
 window.addEventListener('load', () => initSwipers(swiperClasses));
 window.addEventListener('resize', () => initSwipers(swiperClasses));
+
+
+/** Phone mask */
+document.getElementById("phone_cons").addEventListener("input", function (e) {
+  let input = e.target;
+  let value = input.value.replace(/\D/g, "");
+
+  if (value === "") {
+    input.value = "";
+    return;
+  }
+
+  let formattedValue = "+7 (";
+
+  if (value.length > 1) {
+    formattedValue += value.substring(1, 4);
+  }
+  if (value.length >= 5) {
+    formattedValue += ") " + value.substring(4, 7);
+  }
+  if (value.length >= 8) {
+    formattedValue += "-" + value.substring(7, 9);
+  }
+  if (value.length >= 10) {
+    formattedValue += "-" + value.substring(9, 11);
+  }
+
+  input.value = formattedValue;
+});

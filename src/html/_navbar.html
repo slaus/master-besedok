@@ -46,11 +46,123 @@
                     <li class="menu__item">
                         <a href="#" class="menu__item-link">Контакты</a>
                     </li>
+                    <li class="menu__item menu__search">
+                        <form class="menu__search-form" method="GET" action="/search/">
+                            <input type="text" class="menu__search-form--input" name="search" required="required"
+                                placeholder="Введите слово для поиска..">
+                            <button class="menu__search-form--btn">Поиск</button>
+                        </form>
+                    </li>
+                    <li class="menu__item menu__email">
+                        <a href="mailto:sale@master-besedok.ru">
+                            <img src="img/icon-email.svg" alt="icon">
+                            <span>sale@master-besedok.ru</span>
+                        </a>
+                    </li>
+                    <li class="menu__item menu__callback">
+                        <a href="#" class="callback">Заказать звонок</a>
+                    </li>
+                    <li class="menu__item menu__rating">
+                        <a href="">
+                            <img src="img/rating.png" alt="rating">
+                        </a>
+                    </li>
                 </ul>
                 <div class="navbar__info">
                     <div class="navbar__info-callback">
                         <a href="#" class="callback">Заказать звонок</a>
                     </div>
+                </div>
+            </nav>
+            <nav class="navbar__catalog">
+                <div class="catalog" id="catalog">
+                    <a href="#" class="catalog__link">Каталог товаров</a>
+                    <ul class="catalog__menu">
+                        <li class="catalog__item catalog__item-parent">
+                            <a href="#" class="catalog__item-link">Комплектация<span></span></a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">С барбекю</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">С летней кухней</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="catalog__item catalog__item-parent">
+                            <a href="#" class="catalog__item-link">Материал<span></span></a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Брус</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Оцилиндрованное бревно</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="catalog__item catalog__item-parent">
+                            <a href="#" class="catalog__item-link">Форма основания<span></span></a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Квадратные</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Угловые</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="catalog__item catalog__item-parent">
+                            <a href="#" class="catalog__item-link">Форма крыши<span></span></a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Односкатная крыша</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Двухскатная крыша</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="catalog__item catalog__item-parent">
+                            <a href="#" class="catalog__item-link">Остекленение<span></span></a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Зимние</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Летние</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="catalog__item catalog__item-parent">
+                            <a href="#" class="catalog__item-link">Стиль<span></span></a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Финские</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Японские</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="catalog__item catalog__item-parent">
+                            <a href="#" class="catalog__item-link">Производитель<span></span></a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Агросфера</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__item-link">Череповецкие</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="submenu__search">
+                            <form class="submenu__search-form" method="GET" action="/search/">
+                                <input type="text" class="submenu__search-form--input" name="search" required="required"
+                                    placeholder="Введите слово для поиска..">
+                                <button class="submenu__search-form--btn">Поиск</button>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             </nav>
             <button class="burger">

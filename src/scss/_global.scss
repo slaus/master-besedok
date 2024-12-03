@@ -42,14 +42,14 @@ body {
 
     &.locked {
         overflow: hidden;
-
+        
         &.open {
-            padding-right: 19px !important;
+            padding-right: 0 !important;
         }
-
-        @media screen and (max-width: $breakpoint768) {
+        
+        @media screen and (max-width: $breakpoint992) {
             position: relative;
-
+            
             &:after {
                 content   : "";
                 position  : fixed;
@@ -57,7 +57,7 @@ body {
                 right     : 0;
                 top       : 0;
                 bottom    : 0;
-                background: rgba(30, 30, 30, .5);
+                // background: rgba(30, 30, 30, .5);
             }
         }
     }
@@ -94,10 +94,20 @@ h1 {
         line-height  : 52px;
         margin-bottom: 30px;
     }
+    
+    @media screen and (max-width: $breakpoint1200) {
+        font-size  : 36px;
+        line-height: 44px;
+    }
+
+    @media screen and (max-width: $breakpoint992) {
+        font-size  : 30px;
+        line-height: 38px;
+    }
 
     @media screen and (max-width: $breakpoint768) {
-        font-size  : 32px;
-        line-height: 44px;
+        font-size  : 26px;
+        line-height: 32px;
     }
 
     @media screen and (max-width: $breakpoint577) {
@@ -125,9 +135,19 @@ h3 {
         margin-bottom: 30px;
     }
 
-    @media screen and (max-width: $breakpoint768) {
+    @media screen and (max-width: $breakpoint1200) {
         font-size  : 32px;
         line-height: 44px;
+    }
+
+    @media screen and (max-width: $breakpoint992) {
+        font-size  : 28px;
+        line-height: 38px;
+    }
+
+    @media screen and (max-width: $breakpoint768) {
+        font-size  : 24px;
+        line-height: 32px;
     }
 
     @media screen and (max-width: $breakpoint577) {

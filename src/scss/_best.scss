@@ -8,10 +8,19 @@
         margin : 30px 0;
     }
 
+    @media screen and (max-width: $breakpoint768) {
+        padding: 20px 0;
+        margin : 20px 0;
+    }
+
     &__top {
         text-align   : center;
         margin-bottom: 50px;
         position     : relative;
+
+        @media screen and (max-width: $breakpoint992) {
+            margin-bottom: 30px;
+        }
 
         &-title {
             margin-bottom: 0;
@@ -80,8 +89,8 @@
         width         : 100%;
         flex-direction: column;
         align-items   : center;
-        position: relative;
-        z-index: 2;
+        position      : relative;
+        z-index       : 2;
 
         @media screen and (max-width: $breakpoint1200) {
             display   : flex;
@@ -101,6 +110,14 @@
             font-size      : 16px;
             font-weight    : 500;
             transition     : all .5s ease;
+
+            @media screen and (max-width: $breakpoint992) {
+                height: 44px;
+            }
+
+            @media screen and (max-width: $breakpoint768) {
+                height: 40px;
+            }
 
             &:after {
                 content        : "";
@@ -151,6 +168,13 @@
             padding: 20px;
         }
 
+        @media screen and (max-width: $breakpoint992) {
+            max-width   : 450px;
+            width       : 100%;
+            margin-left : auto;
+            margin-right: auto;
+        }
+
         &:hover {
             box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
         }
@@ -191,6 +215,15 @@
                 @media screen and (max-width: $breakpoint1450) {
                     font-size  : 15px;
                     line-height: 46px;
+                }
+
+                @media screen and (max-width: $breakpoint992) {
+                    line-height: 44px;
+                }
+
+                @media screen and (max-width: $breakpoint768) {
+                    line-height: 40px;
+                    font-size  : 14px;
                 }
             }
         }
@@ -339,8 +372,13 @@
                     font-weight: 400;
                 }
 
+                @media screen and (max-width: $breakpoint992) {
+                    height: 44px;
+                }
+
                 @media screen and (max-width: $breakpoint768) {
-                    width: fit-content;
+                    width : fit-content;
+                    height: 40px;
                 }
 
                 &:hover {
