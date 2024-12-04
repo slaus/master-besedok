@@ -24,6 +24,10 @@
         @media screen and (max-width: $breakpoint768) {
             height: 72px;
         }
+
+        @media screen and (max-width: $breakpoint577) {
+            gap: 10px;
+        }
     }
 
     &__logo {
@@ -50,6 +54,12 @@
         @media screen and (max-width: $breakpoint768) {
             img {
                 width: 60px;
+            }
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            img {
+                width: 50px;
             }
         }
     }
@@ -142,6 +152,11 @@
         @media screen and (max-width: $breakpoint992) {
             padding-right: 70px;
         }
+
+        @media screen and (max-width: $breakpoint577) {
+            padding-right: 60px;
+        }
+
         a {
             display    : flex;
             gap        : 10px;

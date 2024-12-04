@@ -176,6 +176,10 @@
             align-items: center;
             gap        : 15px;
 
+            @media screen and (max-width: $breakpoint577) {
+                margin-top: 20px;
+            }
+
             li {
                 display: block;
                 width  : 30px;
