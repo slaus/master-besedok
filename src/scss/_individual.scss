@@ -8,6 +8,12 @@
         margin : 20px 0;
     }
 
+    @media screen and (max-width: $breakpoint577) {
+        & .container {
+            padding: 0;
+        }
+    }
+
     &__top {
         text-align   : center;
         margin-bottom: 50px;
@@ -89,12 +95,20 @@
     &__swiper {
         width   : 100%;
         overflow: hidden;
+
+        @media screen and (max-width: $breakpoint577) {
+            padding: 0 15px;
+        }
     }
 
     &__block {
-        position      : relative;
-        overflow      : hidden;
+        position         : relative;
+        overflow         : hidden;
         // padding-bottom: 50px;
+
+        @media screen and (max-width: $breakpoint577) {
+            width: 160%;
+        }
     }
 
     &__item {
@@ -149,7 +163,7 @@
             line-height: 20px;
 
             @media screen and (max-width: $breakpoint768) {
-                font-size: 14px;
+                font-size  : 14px;
                 line-height: 18px;
             }
         }
@@ -158,9 +172,18 @@
     &__subtitle {
         font-weight  : 500;
         font-size    : 16px;
-        line-height  : 20px;
+        line-height  : 24px;
         margin-top   : 10px;
         margin-bottom: 5px;
+
+        a {
+            color        : $black;
+            border-bottom: 1px solid transparent;
+
+            &:hover {
+                border-bottom: 1px solid $black;
+            }
+        }
     }
 
     &__info {

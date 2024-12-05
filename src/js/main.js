@@ -294,7 +294,7 @@ const swiperBest = new Swiper('.swiper-best', {
 });
 
 const swiperIndividual = new Swiper('.swiper-individual', {
-  slidesPerView: 1,
+  slidesPerView: 2,
   spaceBetween: 10,
   loop: true,
   mousewheel: false,
@@ -318,7 +318,7 @@ const swiperIndividual = new Swiper('.swiper-individual', {
   },
   breakpoints: {
     480: {
-      slidesPerView: 1,
+      slidesPerView: 2,
       spaceBetween: 10
     },
     768: {
@@ -483,7 +483,7 @@ function initSwipers(swiperSelectors) {
       if (!swiperEl.classList.contains('swiper-initialized')) {
         swiperEl.classList.add('swiper');
         const swiper = new Swiper(selector, {
-          slidesPerView: 1,
+          slidesPerView: 2,
           spaceBetween: 10,
           loop: true,
           mousewheel: false,
@@ -507,7 +507,7 @@ function initSwipers(swiperSelectors) {
           },
           breakpoints: {
             480: {
-              slidesPerView: 1,
+              slidesPerView: 2,
               spaceBetween: 10,
             },
             768: {
@@ -571,3 +571,90 @@ const phoneMask = (trigger) => {
 
 phoneMask("#phone_cons");
 phoneMask("#phone_modal");
+
+
+/** Drugging tabs */
+const tabsWrapper = document.querySelectorAll('.tabs__wrapper');
+
+const enableDragScroll = (tabsItem) => {
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  const onMouseDown = (e) => {
+    isDragging = true;
+    tabsItem.classList.add('dragging');
+    startX = e.pageX - tabsItem.offsetLeft;
+    scrollLeft = tabsItem.scrollLeft;
+  };
+
+  const onTouchStart = (e) => {
+    isDragging = true;
+    tabsItem.classList.add('dragging');
+    startX = e.touches[0].pageX - tabsItem.offsetLeft;
+    scrollLeft = tabsItem.scrollLeft;
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - tabsItem.offsetLeft;
+    const walk = (x - startX) * 2;
+    tabsItem.scrollLeft = scrollLeft - walk;
+  };
+
+  const onTouchMove = (e) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - tabsItem.offsetLeft;
+    const walk = (x - startX) * 2;
+    tabsItem.scrollLeft = scrollLeft - walk;
+  };
+
+  const onMouseUpOrLeave = () => {
+    isDragging = false;
+    tabsItem.classList.remove('dragging');
+  };
+
+  tabsItem.addEventListener('mousedown', onMouseDown);
+  tabsItem.addEventListener('touchstart', onTouchStart);
+  tabsItem.addEventListener('mousemove', onMouseMove);
+  tabsItem.addEventListener('touchmove', onTouchMove);
+  tabsItem.addEventListener('mouseup', onMouseUpOrLeave);
+  tabsItem.addEventListener('mouseleave', onMouseUpOrLeave);
+  tabsItem.addEventListener('touchend', onMouseUpOrLeave);
+
+  return () => {
+    tabsItem.removeEventListener('mousedown', onMouseDown);
+    tabsItem.removeEventListener('touchstart', onTouchStart);
+    tabsItem.removeEventListener('mousemove', onMouseMove);
+    tabsItem.removeEventListener('touchmove', onTouchMove);
+    tabsItem.removeEventListener('mouseup', onMouseUpOrLeave);
+    tabsItem.removeEventListener('mouseleave', onMouseUpOrLeave);
+    tabsItem.removeEventListener('touchend', onMouseUpOrLeave);
+  };
+}
+
+let cleanupFunctions = [];
+
+const checkScreenSize = () => {
+  if (window.innerWidth <= 767) {
+    tabsWrapper.forEach((tabsItem) => {
+      if (!tabsItem.classList.contains('drag-enabled')) {
+        const cleanup = enableDragScroll(tabsItem);
+        cleanupFunctions.push(cleanup);
+        tabsItem.classList.add('drag-enabled');
+      }
+    });
+  } else {
+    cleanupFunctions.forEach((cleanup) => cleanup());
+    cleanupFunctions = [];
+    tabsWrapper.forEach((tabsItem) => {
+      tabsItem.classList.remove('drag-enabled');
+    });
+  }
+};
+
+checkScreenSize();
+
+window.addEventListener('resize', checkScreenSize);
+

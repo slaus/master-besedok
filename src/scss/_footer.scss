@@ -3,6 +3,7 @@
     background: $brown;
     color     : $white;
     padding   : 25px 0 30px;
+    overflow-x: hidden;
 
     @media screen and (max-width: $breakpoint1450) {
         padding: 30px 0;
