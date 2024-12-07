@@ -1,12 +1,10 @@
-.making {
+.edge {
     display   : block;
     margin    : 20px 0;
-    padding   : 50px 14%;
+    padding   : 50px 0;
     overflow-x: hidden;
 
-    @media screen and (max-width: $breakpoint1600) {
-        padding: 50px 8%;
-    }
+    &__container {}
 
     @media screen and (max-width: $breakpoint1450) {
         padding: 30px 0;

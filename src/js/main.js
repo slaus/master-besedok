@@ -226,9 +226,30 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClass, display
   });
 };
 
-tabs('.projects__buttons', '.projects__buttons-item', '.projects__block', 'active');
-tabs('.steps__buttons', '.steps__buttons-item', '.steps__block', 'active');
+try {
+  tabs('.projects__buttons', '.projects__buttons-item', '.projects__block', 'active');
+  tabs('.steps__buttons', '.steps__buttons-item', '.steps__block', 'active');
+} catch (error) { }
 
+
+/** Show on page */
+const showOnPage = (trigger) => {
+  const showBlock = document.querySelector(trigger);
+  if (!showBlock) return;
+
+  const items = showBlock.querySelectorAll("a");
+  items.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      items.forEach((el) => el.classList.remove("active"));
+      e.target.classList.add("active");
+    });
+  });
+};
+
+try {
+  showOnPage("#show");
+} catch (error) { }
 
 
 /** Swiper slider */
@@ -533,7 +554,7 @@ function initSwipers(swiperSelectors) {
   });
 }
 
-const swiperClasses = ['.swiper-making', '.swiper-project-1', '.swiper-project-2', '.swiper-project-3', '.swiper-project-4', '.swiper-project-5', '.swiper-steps-1', '.swiper-steps-2', '.swiper-other'];
+const swiperClasses = ['.swiper-advantage', '.swiper-project-1', '.swiper-project-2', '.swiper-project-3', '.swiper-project-4', '.swiper-project-5', '.swiper-steps-1', '.swiper-steps-2', '.swiper-other'];
 
 window.addEventListener('load', () => initSwipers(swiperClasses));
 window.addEventListener('resize', () => initSwipers(swiperClasses));
@@ -655,6 +676,117 @@ const checkScreenSize = () => {
 };
 
 checkScreenSize();
-
 window.addEventListener('resize', checkScreenSize);
 
+
+
+/** Dropdown */
+const dropdownMenu = (trigger, dropdownGroup, dropdownSelected) => {
+  const sortLinks = document.querySelectorAll(trigger);
+
+  sortLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const target = event.target;
+      const group = target.closest(dropdownGroup);
+
+      const selectedText = group.querySelector(dropdownSelected);
+      selectedText.textContent = target.getAttribute('data-value');
+
+      /*selectedText.classList.add("selected");*/
+
+      group.querySelector("span").style.display = 'none';
+
+      const newUrl = target.getAttribute('href');
+      window.history.pushState({}, '', newUrl);
+    });
+  });
+};
+
+try {
+  dropdownMenu('.dropdown-menu a', '.dropdown-group', '.dropdown-selected');
+} catch (error) { }
+
+
+
+/** Range price */
+const rangeInput = document.querySelectorAll(".range__input input"),
+  priceInput = document.querySelectorAll(".range__price input"),
+  range = document.querySelector(".range__slider .range__progress");
+
+let priceGap = 1000;
+
+priceInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    let minPrice = parseInt(priceInput[0].value),
+      maxPrice = parseInt(priceInput[1].value);
+
+    if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+      if (e.target.className === "input-min") {
+        rangeInput[0].value = minPrice;
+        range.style.left = ((minPrice - rangeInput[0].min) / (rangeInput[0].max - rangeInput[0].min)) * 100 + "%";
+      } else {
+        rangeInput[1].value = maxPrice;
+        range.style.right = 100 - ((maxPrice - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min)) * 100 + "%";
+      }
+    }
+  });
+});
+
+rangeInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    let minVal = parseInt(rangeInput[0].value),
+      maxVal = parseInt(rangeInput[1].value);
+
+    if (maxVal - minVal < priceGap) {
+      if (e.target.className === "range-min") {
+        rangeInput[0].value = maxVal - priceGap;
+      } else {
+        rangeInput[1].value = minVal + priceGap;
+      }
+    } else {
+      priceInput[0].value = minVal;
+      priceInput[1].value = maxVal;
+
+      range.style.left = ((minVal - rangeInput[0].min) / (rangeInput[0].max - rangeInput[0].min)) * 100 + "%";
+      range.style.right = 100 - ((maxVal - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min)) * 100 + "%";
+    }
+  });
+});
+
+document.getElementById("showButton").addEventListener("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  const minPrice = document.querySelector(".input-min").value;
+  const maxPrice = document.querySelector(".input-max").value;
+
+  const url = `?price1=${minPrice}&price2=${maxPrice}`;
+
+  window.location.href = url;
+});
+
+
+/** Open filter */
+const openFilter = (trigger) => {
+  const filterElement = document.querySelector(trigger);
+  const filterBlock = document.querySelector(".filter__block");
+
+  filterElement.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    filterBlock.classList.toggle("active");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!filterBlock.contains(e.target) && !filterElement.contains(e.target)) {
+      filterBlock.classList.remove("active");
+    }
+  });
+};
+
+try {
+  openFilter("#filter");
+} catch (error) {}

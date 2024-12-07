@@ -18,22 +18,23 @@
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
-<body class="main__body main__home">
+<body class="main__body main__catalog">
     @@include('./html/_header.html')
     @@include('./html/_navbar.html')
-    @@include('./html/_slider.html')
-    <main>
-        @@include('./html/_making.html')
-        @@include('./html/_projects.html')
-        @@include('./html/_steps.html')
-        @@include('./html/_company.html')
-        @@include('./html/_best.html')
-        @@include('./html/_individual.html')
-        @@include('./html/_video.html')
-        @@include('./html/_manufacture.html')
-        @@include('./html/_other.html')
-        @@include('./html/_cert.html')
-        @@include('./html/_gerb.html')
+    @@include('./html/_breadcrumb.html')
+    <main class="main">
+        <div class="main__wrapper">
+            @@include('./html/_sidebar.html')
+            <div class="main__content">
+                @@include('./html/_category_desc.html')
+                @@include('./html/_show.html')
+                @@include('./html/_filter.html')
+                @@include('./html/_hit.html')
+                @@include('./html/_edge.html')
+                @@include('./html/_info.html')
+                @@include('./html/_calculate.html')
+            </div>
+        </div>
     </main>
     @@include('./html/_footer.html')
     @@include('./html/_modal.html')

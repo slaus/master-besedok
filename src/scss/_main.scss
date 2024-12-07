@@ -1,0 +1,36 @@
+.main {
+    max-width: 1629px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @media screen and (max-width: $breakpoint1450) {
+        max-width: 1400px;
+    }
+
+    @media screen and (max-width: $breakpoint1200) {
+        max-width: none;
+    }
+
+    @media screen and (max-width: $breakpoint992) {
+        padding: 0;
+    }
+
+    &__wrapper {
+        display: flex;
+        gap    : 20px;
+        width: 100%;
+
+        @media screen and (max-width: $breakpoint992) {
+            gap: 0;
+        }
+    }
+
+    &__content {
+        width: calc(100% - 320px);
+
+        @media screen and (max-width: $breakpoint992) {
+            width: 100%;
+        }
+    }
+}

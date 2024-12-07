@@ -1,0 +1,41 @@
+.breadcrumb {
+    display: block;
+    margin-bottom: 20px;
+
+    &__block {
+        height     : 60px;
+        display    : flex;
+        align-items: center;
+        gap        : 10px;
+    }
+
+    &__link {
+        color        : $black;
+        border-bottom: 1px dashed transparent;
+
+        &:hover {
+            color        : $brown;
+            border-bottom: 1px dashed $brown;
+        }
+    }
+
+    &__item {
+        border-bottom: 1px solid $black;
+    }
+
+    span {
+        display    : inline-block;
+        height     : 16px;
+        font-weight: 300;
+        font-size  : 12px;
+        line-height: 16px;
+        color      : $black;
+    }
+
+    span+span {
+        &:before {
+            content     : "/";
+            margin-right: 5px;
+        }
+    }
+}

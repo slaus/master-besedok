@@ -1,0 +1,106 @@
+.range {
+    width    : 100%;
+    max-width: 340px;
+
+    &__block {
+        span {
+            display       : block;
+            margin-bottom : 15px;
+            text-transform: uppercase;
+        }
+    }
+
+    &__price {
+        width  : 100%;
+        display: flex;
+        margin : 15px 0;
+    }
+
+    &__price &__field {
+        display    : flex;
+        width      : 100%;
+        height     : 45px;
+        align-items: center;
+    }
+
+    &__field input {
+        width          : 110px;
+        height         : 44px;
+        outline        : none;
+        margin-left    : 12px;
+        border-radius  : 8px;
+        text-align     : center;
+        border         : 1px solid $brown;
+        -moz-appearance: textfield;
+        font-size      : 16px;
+        font-weight    : 600;
+        line-height    : 20px;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    &__price &__separator {
+        width          : 30px;
+        display        : flex;
+        font-size      : 19px;
+        align-items    : center;
+        justify-content: center;
+    }
+
+    &__slider {
+        height       : 5px;
+        position     : relative;
+        background   : $brownLight;
+        border-radius: 5px;
+        overflow     : hidden;
+    }
+
+    &__slider &__progress {
+        height       : 100%;
+        left         : 0%;
+        right        : 0%;
+        position     : absolute;
+        border-radius: 5px;
+        background   : $brown;
+    }
+
+    &__input {
+        position: relative;
+    }
+
+    &__input input {
+        position          : absolute;
+        width             : 100%;
+        height            : 5px;
+        top               : -5px;
+        background        : none;
+        pointer-events    : none;
+        -webkit-appearance: none;
+        -moz-appearance   : none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        height            : 17px;
+        width             : 17px;
+        border-radius     : 50%;
+        background        : $orange;
+        pointer-events    : auto;
+        -webkit-appearance: none;
+        box-shadow        : 0 0 6px rgba(0, 0, 0, 0.05);
+        cursor            : w-resize;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        height         : 17px;
+        width          : 17px;
+        border         : none;
+        border-radius  : 50%;
+        background     : #17a2b8;
+        pointer-events : auto;
+        -moz-appearance: none;
+        box-shadow     : 0 0 6px rgba(0, 0, 0, 0.05);
+    }
+}

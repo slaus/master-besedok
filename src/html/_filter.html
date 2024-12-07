@@ -1,0 +1,46 @@
+<section class="filter">
+    <div class="container">
+        <div class="filter__block">
+            <div class="filter__top">
+                <a href="" id="filter" class="filter__top-link">Фильтр</a>
+                <div class="dropdown-group">
+                    <p class="dropdown-selected"></p>
+                    <span>По умолчанию</span>
+                    <div class="dropdown-menu">
+                        <a href="?sort=SORT&sort_kak=ASC" data-value="По умолчанию">По умолчанию</a>
+                        <a href="?sort=PROPERTY_NEW_PRICE&sort_kak=ASC" data-value="Сначала дешевые">Сначала дешевые</a>
+                        <a href="?sort=PROPERTY_NEW_PRICE&sort_kak=DESC" data-value="Сначала дорогие">Сначала
+                            дорогие</a>
+                        <a href="?sort=POPULAR&sort_kak=ASC" data-value="По популярности">По популярности</a>
+                    </div>
+                </div>
+            </div>
+            <div class="filter__bottom">
+                <div class="range">
+                    <div class="range__block">
+                        <span>Цена</span>
+                        <div class="range__slider">
+                            <div class="range__progress"></div>
+                        </div>
+                    </div>
+                    <div class="range__input">
+                        <input type="range" class="range-min" min="150000" max="750000" value="150000" step="1000">
+                        <input type="range" class="range-max" min="150000" max="750000" value="750000" step="1000">
+                    </div>
+                    <div class="range__price">
+                        <div class="range__field">
+                            <span>от</span>
+                            <input type="number" class="input-min" value="150000">
+                        </div>
+                        <div class="range__separator"></div>
+                        <div class="range__field">
+                            <span>до</span>
+                            <input type="number" class="input-max" value="750000">
+                        </div>
+                    </div>
+                </div>
+                <button id="showButton" class="filter__button">Показать</button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,15 @@
+.sidebar {
+    width: 300px;
+    height: auto;
+    background: $rose;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1 0 300px;
+
+    @media screen and (max-width: $breakpoint992) {
+        flex: 1 0 0;
+        display: none;
+        gap: 0;
+    }
+}
