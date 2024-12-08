@@ -1,16 +1,14 @@
 .hit {
     display: block;
-    margin : 30px 0;
+    margin : 30px 0 0;
     padding: 30px 0;
 
     @media screen and (max-width: $breakpoint1450) {
         padding: 20px 0;
-        margin : 30px 0;
     }
 
     @media screen and (max-width: $breakpoint768) {
-        padding: 20px 0;
-        margin : 20px 0;
+        margin: 20px 0 0;
     }
 
     &__wrapper {
@@ -18,11 +16,19 @@
         display              : grid;
         grid-template-columns: repeat(2, 1fr);
         width                : 100%;
-        gap: 20px;
+        gap                  : 20px;
+
+        @media screen and (max-width: $breakpoint1200) {
+            gap: 15px;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
 
     &__block {
-        position      : relative;
+        position: relative;
     }
 
     &__item {

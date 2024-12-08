@@ -29,6 +29,10 @@
     &__content {
         width: calc(100% - 320px);
 
+        @media screen and (max-width: $breakpoint1200) {
+           width: calc(100% - 290px); 
+        }
+
         @media screen and (max-width: $breakpoint992) {
             width: 100%;
         }

@@ -7,6 +7,15 @@
         display: flex;
         gap    : 30px;
 
+        @media screen and (max-width: $breakpoint1200) {
+            gap: 20px;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            flex-direction: column-reverse;
+            gap           : 15px;
+        }
+
         &-text {
             font-size  : 14px;
             line-height: 20px;
@@ -14,7 +23,7 @@
             a {
                 color        : $black;
                 border-bottom: 1px solid $black;
-                transition: all .3s ease;
+                transition   : all .3s ease;
 
                 &:hover {
                     color        : $brown;
@@ -29,17 +38,27 @@
         }
 
         &-img {
-            width: 100%;
-            max-width: 120px;
-            height: fit-content;
-            overflow: hidden;
+            width        : 100%;
+            max-width    : 120px;
+            height       : fit-content;
+            overflow     : hidden;
             border-radius: 5px;
+            flex         : 1 0 120px;
+
+            @media screen and (max-width: $breakpoint768) {
+                max-width: 150px;
+                flex     : 1 0 150px;
+            }
+
+            @media screen and (max-width: $breakpoint577) {
+                max-width: 100%;
+                flex     : 1 0 100%;
+            }
 
             img {
-                width: 100%;
-                height: 100%;
+                width     : 100%;
+                height    : 100%;
                 object-fit: contain;
-                flex: 0 1 120px;
             }
         }
     }

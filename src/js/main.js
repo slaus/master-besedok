@@ -232,12 +232,12 @@ try {
 } catch (error) { }
 
 
-/** Show on page */
-const showOnPage = (trigger) => {
-  const showBlock = document.querySelector(trigger);
-  if (!showBlock) return;
+/** Show active item */
+const activeItem = (trigger) => {
+  const parentBlock = document.querySelector(trigger);
+  if (!parentBlock) return;
 
-  const items = showBlock.querySelectorAll("a");
+  const items = parentBlock.querySelectorAll("a");
   items.forEach((item) => {
     item.addEventListener("click", (e) => {
       e.preventDefault();
@@ -248,7 +248,8 @@ const showOnPage = (trigger) => {
 };
 
 try {
-  showOnPage("#show");
+  activeItem("#show");
+  activeItem("#perelink");
 } catch (error) { }
 
 
@@ -594,90 +595,94 @@ phoneMask("#phone_cons");
 phoneMask("#phone_modal");
 
 
-/** Drugging tabs */
-const tabsWrapper = document.querySelectorAll('.tabs__wrapper');
+/** Dragging */
+const dragging = (trigger, size) => {
+  const draggingWrapper = document.querySelectorAll(trigger);
 
-const enableDragScroll = (tabsItem) => {
-  let isDragging = false;
-  let startX;
-  let scrollLeft;
+  const enableDragScroll = (tabsItem) => {
+    let isDragging = false;
+    let startX;
+    let scrollLeft;
 
-  const onMouseDown = (e) => {
-    isDragging = true;
-    tabsItem.classList.add('dragging');
-    startX = e.pageX - tabsItem.offsetLeft;
-    scrollLeft = tabsItem.scrollLeft;
+    const onMouseDown = (e) => {
+      isDragging = true;
+      tabsItem.classList.add('dragging');
+      startX = e.pageX - tabsItem.offsetLeft;
+      scrollLeft = tabsItem.scrollLeft;
+    };
+
+    const onTouchStart = (e) => {
+      isDragging = true;
+      tabsItem.classList.add('dragging');
+      startX = e.touches[0].pageX - tabsItem.offsetLeft;
+      scrollLeft = tabsItem.scrollLeft;
+    };
+
+    const onMouseMove = (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - tabsItem.offsetLeft;
+      const walk = (x - startX) * 2;
+      tabsItem.scrollLeft = scrollLeft - walk;
+    };
+
+    const onTouchMove = (e) => {
+      if (!isDragging) return;
+      const x = e.touches[0].pageX - tabsItem.offsetLeft;
+      const walk = (x - startX) * 2;
+      tabsItem.scrollLeft = scrollLeft - walk;
+    };
+
+    const onMouseUpOrLeave = () => {
+      isDragging = false;
+      tabsItem.classList.remove('dragging');
+    };
+
+    tabsItem.addEventListener('mousedown', onMouseDown);
+    tabsItem.addEventListener('touchstart', onTouchStart);
+    tabsItem.addEventListener('mousemove', onMouseMove);
+    tabsItem.addEventListener('touchmove', onTouchMove);
+    tabsItem.addEventListener('mouseup', onMouseUpOrLeave);
+    tabsItem.addEventListener('mouseleave', onMouseUpOrLeave);
+    tabsItem.addEventListener('touchend', onMouseUpOrLeave);
+
+    return () => {
+      tabsItem.removeEventListener('mousedown', onMouseDown);
+      tabsItem.removeEventListener('touchstart', onTouchStart);
+      tabsItem.removeEventListener('mousemove', onMouseMove);
+      tabsItem.removeEventListener('touchmove', onTouchMove);
+      tabsItem.removeEventListener('mouseup', onMouseUpOrLeave);
+      tabsItem.removeEventListener('mouseleave', onMouseUpOrLeave);
+      tabsItem.removeEventListener('touchend', onMouseUpOrLeave);
+    };
   };
 
-  const onTouchStart = (e) => {
-    isDragging = true;
-    tabsItem.classList.add('dragging');
-    startX = e.touches[0].pageX - tabsItem.offsetLeft;
-    scrollLeft = tabsItem.scrollLeft;
+  let cleanupFunctions = [];
+
+  const checkScreenSize = () => {
+    if (window.innerWidth <= size) {
+      draggingWrapper.forEach((tabsItem) => {
+        if (!tabsItem.classList.contains('drag-enabled')) {
+          const cleanup = enableDragScroll(tabsItem);
+          cleanupFunctions.push(cleanup);
+          tabsItem.classList.add('drag-enabled');
+        }
+      });
+    } else {
+      cleanupFunctions.forEach((cleanup) => cleanup());
+      cleanupFunctions = [];
+      draggingWrapper.forEach((tabsItem) => {
+        tabsItem.classList.remove('drag-enabled');
+      });
+    }
   };
 
-  const onMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - tabsItem.offsetLeft;
-    const walk = (x - startX) * 2;
-    tabsItem.scrollLeft = scrollLeft - walk;
-  };
-
-  const onTouchMove = (e) => {
-    if (!isDragging) return;
-    const x = e.touches[0].pageX - tabsItem.offsetLeft;
-    const walk = (x - startX) * 2;
-    tabsItem.scrollLeft = scrollLeft - walk;
-  };
-
-  const onMouseUpOrLeave = () => {
-    isDragging = false;
-    tabsItem.classList.remove('dragging');
-  };
-
-  tabsItem.addEventListener('mousedown', onMouseDown);
-  tabsItem.addEventListener('touchstart', onTouchStart);
-  tabsItem.addEventListener('mousemove', onMouseMove);
-  tabsItem.addEventListener('touchmove', onTouchMove);
-  tabsItem.addEventListener('mouseup', onMouseUpOrLeave);
-  tabsItem.addEventListener('mouseleave', onMouseUpOrLeave);
-  tabsItem.addEventListener('touchend', onMouseUpOrLeave);
-
-  return () => {
-    tabsItem.removeEventListener('mousedown', onMouseDown);
-    tabsItem.removeEventListener('touchstart', onTouchStart);
-    tabsItem.removeEventListener('mousemove', onMouseMove);
-    tabsItem.removeEventListener('touchmove', onTouchMove);
-    tabsItem.removeEventListener('mouseup', onMouseUpOrLeave);
-    tabsItem.removeEventListener('mouseleave', onMouseUpOrLeave);
-    tabsItem.removeEventListener('touchend', onMouseUpOrLeave);
-  };
-}
-
-let cleanupFunctions = [];
-
-const checkScreenSize = () => {
-  if (window.innerWidth <= 767) {
-    tabsWrapper.forEach((tabsItem) => {
-      if (!tabsItem.classList.contains('drag-enabled')) {
-        const cleanup = enableDragScroll(tabsItem);
-        cleanupFunctions.push(cleanup);
-        tabsItem.classList.add('drag-enabled');
-      }
-    });
-  } else {
-    cleanupFunctions.forEach((cleanup) => cleanup());
-    cleanupFunctions = [];
-    tabsWrapper.forEach((tabsItem) => {
-      tabsItem.classList.remove('drag-enabled');
-    });
-  }
+  checkScreenSize();
+  window.addEventListener('resize', checkScreenSize);
 };
 
-checkScreenSize();
-window.addEventListener('resize', checkScreenSize);
-
+dragging('.tabs__wrapper', 767);
+dragging('.perelink__wrapper', 991);
 
 
 /** Dropdown */
@@ -712,61 +717,92 @@ try {
 
 
 /** Range price */
-const rangeInput = document.querySelectorAll(".range__input input"),
-  priceInput = document.querySelectorAll(".range__price input"),
-  range = document.querySelector(".range__slider .range__progress");
+try {
+  const rangeInput = document.querySelectorAll(".range__input input"),
+    priceInput = document.querySelectorAll(".range__price input"),
+    range = document.querySelector(".range__slider .range__progress");
 
-let priceGap = 1000;
+  let priceGap = 1000;
 
-priceInput.forEach((input) => {
-  input.addEventListener("input", (e) => {
-    let minPrice = parseInt(priceInput[0].value),
-      maxPrice = parseInt(priceInput[1].value);
+  priceInput.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      let minPrice = parseInt(priceInput[0].value),
+        maxPrice = parseInt(priceInput[1].value);
 
-    if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+      if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+        if (e.target.className === "input-min") {
+          rangeInput[0].value = minPrice;
+          range.style.left = ((minPrice - rangeInput[0].min) / (rangeInput[0].max - rangeInput[0].min)) * 100 + "%";
+        } else {
+          rangeInput[1].value = maxPrice;
+          range.style.right = 100 - ((maxPrice - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min)) * 100 + "%";
+        }
+      }
+    });
+
+    input.addEventListener("blur", (e) => {
+      let minPrice = parseInt(priceInput[0].value),
+        maxPrice = parseInt(priceInput[1].value);
+
       if (e.target.className === "input-min") {
-        rangeInput[0].value = minPrice;
-        range.style.left = ((minPrice - rangeInput[0].min) / (rangeInput[0].max - rangeInput[0].min)) * 100 + "%";
-      } else {
-        rangeInput[1].value = maxPrice;
-        range.style.right = 100 - ((maxPrice - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min)) * 100 + "%";
+        if (minPrice < rangeInput[0].min) {
+          priceInput[0].value = rangeInput[0].min;
+          rangeInput[0].value = rangeInput[0].min;
+          range.style.left = "0%";
+        }
+        else if (minPrice >= maxPrice) {
+          priceInput[0].value = maxPrice - priceGap;
+          rangeInput[0].value = maxPrice - priceGap;
+          range.style.left = ((maxPrice - priceGap - rangeInput[0].min) / (rangeInput[0].max - rangeInput[0].min)) * 100 + "%";
+        }
+      } else if (e.target.className === "input-max") {
+        if (maxPrice > rangeInput[1].max) {
+          priceInput[1].value = rangeInput[1].max;
+          rangeInput[1].value = rangeInput[1].max;
+          range.style.right = "0%";
+        }
+        else if (maxPrice <= minPrice) {
+          priceInput[1].value = minPrice + priceGap;
+          rangeInput[1].value = minPrice + priceGap;
+          range.style.right = 100 - ((minPrice + priceGap - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min)) * 100 + "%";
+        }
       }
-    }
+    });
   });
-});
 
-rangeInput.forEach((input) => {
-  input.addEventListener("input", (e) => {
-    let minVal = parseInt(rangeInput[0].value),
-      maxVal = parseInt(rangeInput[1].value);
+  rangeInput.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      let minVal = parseInt(rangeInput[0].value),
+        maxVal = parseInt(rangeInput[1].value);
 
-    if (maxVal - minVal < priceGap) {
-      if (e.target.className === "range-min") {
-        rangeInput[0].value = maxVal - priceGap;
+      if (maxVal - minVal < priceGap) {
+        if (e.target.className === "range-min") {
+          rangeInput[0].value = maxVal - priceGap;
+        } else {
+          rangeInput[1].value = minVal + priceGap;
+        }
       } else {
-        rangeInput[1].value = minVal + priceGap;
+        priceInput[0].value = minVal;
+        priceInput[1].value = maxVal;
+
+        range.style.left = ((minVal - rangeInput[0].min) / (rangeInput[0].max - rangeInput[0].min)) * 100 + "%";
+        range.style.right = 100 - ((maxVal - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min)) * 100 + "%";
       }
-    } else {
-      priceInput[0].value = minVal;
-      priceInput[1].value = maxVal;
-
-      range.style.left = ((minVal - rangeInput[0].min) / (rangeInput[0].max - rangeInput[0].min)) * 100 + "%";
-      range.style.right = 100 - ((maxVal - rangeInput[1].min) / (rangeInput[1].max - rangeInput[1].min)) * 100 + "%";
-    }
+    });
   });
-});
 
-document.getElementById("showButton").addEventListener("click", function (e) {
-  e.preventDefault();
-  e.stopPropagation();
+  document.getElementById("showButton").addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-  const minPrice = document.querySelector(".input-min").value;
-  const maxPrice = document.querySelector(".input-max").value;
+    const minPrice = document.querySelector(".input-min").value;
+    const maxPrice = document.querySelector(".input-max").value;
 
-  const url = `?price1=${minPrice}&price2=${maxPrice}`;
+    const url = `?price1=${minPrice}&price2=${maxPrice}`;
 
-  window.location.href = url;
-});
+    window.location.href = url;
+  });
+} catch (error) { }
 
 
 /** Open filter */
@@ -789,4 +825,4 @@ const openFilter = (trigger) => {
 
 try {
   openFilter("#filter");
-} catch (error) {}
+} catch (error) { }
