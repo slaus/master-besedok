@@ -682,7 +682,7 @@ const dragging = (trigger, size) => {
 };
 
 dragging('.tabs__wrapper', 767);
-dragging('.perelink__wrapper', 991);
+dragging('.perelink__wrapper', 1199);
 
 
 /** Dropdown */
@@ -826,3 +826,23 @@ const openFilter = (trigger) => {
 try {
   openFilter("#filter");
 } catch (error) { }
+
+
+/** Format price */
+const formatNumberWithSpaces = (number) => {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+};
+
+const formatPrices = (trigger) => {
+  const priceElements = document.querySelectorAll(trigger);
+  priceElements.forEach(element => {
+      const rawNumber = element.textContent.trim();
+      if (!isNaN(rawNumber)) {
+          element.textContent = formatNumberWithSpaces(rawNumber);
+      }
+  });
+};
+
+formatPrices(".hit__params-price span span");
+formatPrices(".best__params-price span span");
+

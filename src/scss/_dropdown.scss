@@ -14,10 +14,6 @@
         cursor       : pointer;
         padding-left : 15px;
 
-        @media screen and (max-width: $breakpoint768) {
-            max-width: 160px;
-        }
-
         &:hover {
             background: $orange;
             transition: all .3s ease;

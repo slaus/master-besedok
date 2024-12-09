@@ -236,9 +236,14 @@
     &__subtitle {
         height     : 40px;
         font-weight: 500;
-        font-size  : 16px;
+        font-size  : 20px;
         line-height: 20px;
         margin-top : 10px;
+        color: $black;
+
+        @media screen and (max-width: $breakpoint992) {
+            font-size: 18px;
+        }
     }
 
     &__info {

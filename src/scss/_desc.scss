@@ -1,7 +1,42 @@
 .desc {
     margin-bottom: 30px;
 
-    &__title {}
+    &__title {
+        font-size     : 42px;
+        line-height   : 48px;
+        font-family   : $fontSecondary;
+        text-align    : left;
+        margin-bottom : 50px;
+        text-transform: uppercase;
+        width         : 100%;
+        max-width     : 100%;
+
+        @media screen and (max-width: $breakpoint1450) {
+            font-size    : 38px;
+            line-height  : 46px;
+            margin-bottom: 30px;
+        }
+
+        @media screen and (max-width: $breakpoint1200) {
+            font-size  : 32px;
+            line-height: 44px;
+        }
+
+        @media screen and (max-width: $breakpoint992) {
+            font-size  : 28px;
+            line-height: 38px;
+        }
+
+        @media screen and (max-width: $breakpoint768) {
+            font-size  : 24px;
+            line-height: 32px;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            font-size  : 20px;
+            line-height: 28px;
+        }
+    }
 
     &__block {
         display: flex;

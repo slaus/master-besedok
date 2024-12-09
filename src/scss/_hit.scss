@@ -114,9 +114,14 @@
     &__subtitle {
         height     : 40px;
         font-weight: 500;
-        font-size  : 16px;
+        font-size  : 20px;
         line-height: 20px;
         margin-top : 10px;
+        color: $black;
+
+        @media screen and (max-width: $breakpoint992) {
+            font-size: 18px;
+        }
     }
 
     &__info {
@@ -186,6 +191,7 @@
 
         @media screen and (max-width: $breakpoint768) {
             grid-template-columns: repeat(1, 1fr);
+            text-align: right;
         }
 
         &-price {
@@ -261,6 +267,7 @@
                 @media screen and (max-width: $breakpoint768) {
                     width : fit-content;
                     height: 40px;
+                    margin-left: auto;
                 }
 
                 &:hover {
