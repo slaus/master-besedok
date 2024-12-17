@@ -1,201 +1,167 @@
 .header {
-    height    : 110px;
+    height: 110px;
     background: $white;
-
     @media screen and (max-width: $breakpoint1450) {
         height: 80px;
     }
-
     @media screen and (max-width: $breakpoint768) {
         height: 72px;
     }
-
     &__block {
-        height         : 110px;
-        display        : flex;
+        height: 110px;
+        display: flex;
         justify-content: space-between;
-        align-items    : center;
-        gap            : 25px;
-
+        align-items: center;
+        gap: 25px;
         @media screen and (max-width: $breakpoint1450) {
             height: 80px;
         }
-
         @media screen and (max-width: $breakpoint768) {
             height: 72px;
         }
-
         @media screen and (max-width: $breakpoint577) {
             gap: 10px;
         }
     }
-
     &__logo {
-        display       : flex;
-        gap           : 5px;
-        align-items   : center;
-        font-size     : 16px;
-        font-weight   : 500;
-        color         : $black;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 500;
+        color: $black;
         text-transform: uppercase;
-
         @media screen and (max-width: $breakpoint1450) {
             font-size: 15px;
         }
-
         @media screen and (max-width: $breakpoint1200) {
             order: -2;
-
             span {
                 display: none;
             }
         }
-
         @media screen and (max-width: $breakpoint768) {
             img {
                 width: 60px;
             }
         }
-
         @media screen and (max-width: $breakpoint577) {
             img {
                 width: 50px;
             }
         }
     }
-
     &__email {
         margin-left: auto;
-
         @media screen and (max-width: $breakpoint992) {
             display: none;
         }
-
         a {
-            display    : flex;
-            gap        : 10px;
+            display: flex;
+            gap: 10px;
             align-items: center;
-            font-size  : 16px;
+            font-size: 16px;
             font-weight: 500;
-            color      : $black;
-
+            color: $black;
             @media screen and (max-width: $breakpoint1450) {
                 font-size: 15px;
             }
-
             img {
                 transition: all .1s ease;
             }
-
             &:hover {
                 color: $orange;
-
                 img {
                     filter: invert(66%) sepia(58%) saturate(3211%) hue-rotate(338deg) brightness(98%) contrast(106%);
                 }
             }
-
             span {
                 @media screen and (max-width: $breakpoint1200) {
                     display: none;
                 }
             }
         }
-
         img {
-            width     : 28px;
-            height    : 28px;
+            width: 28px;
+            height: 28px;
             object-fit: contain;
         }
     }
-
     &__phone {
         @media screen and (max-width: $breakpoint1200) {
-            order       : -1;
+            order: -1;
             margin-right: auto;
-            margin-left : auto;
+            margin-left: auto;
         }
-
         a {
-            display    : flex;
-            gap        : 10px;
+            display: flex;
+            gap: 10px;
             align-items: center;
-            font-size  : 16px;
+            font-size: 16px;
             font-weight: 500;
-            color      : $black;
-
+            color: $black;
             @media screen and (max-width: $breakpoint1450) {
                 font-size: 15px;
             }
-
+            @media screen and (max-width: $breakpoint577) {
+                font-size: 14px;
+                gap: 5px;
+            }
             img {
                 transition: all .1s ease;
             }
-
             &:hover {
                 color: $orange;
-
                 img {
                     filter: invert(66%) sepia(58%) saturate(3211%) hue-rotate(338deg) brightness(98%) contrast(106%);
                 }
             }
         }
-
         img {
-            width     : 28px;
-            height    : 28px;
+            width: 28px;
+            height: 28px;
             object-fit: contain;
         }
     }
-
     &__whatsapp {
         @media screen and (max-width: $breakpoint992) {
             padding-right: 70px;
         }
-
         @media screen and (max-width: $breakpoint577) {
-            padding-right: 60px;
+            padding-right: 45px;
         }
-
         a {
-            display    : flex;
-            gap        : 10px;
+            display: flex;
+            gap: 10px;
             align-items: center;
-            font-size  : 16px;
+            font-size: 16px;
             font-weight: 500;
-            color      : $black;
-
+            color: $black;
             @media screen and (max-width: $breakpoint1450) {
                 font-size: 15px;
             }
-
             &:hover {
                 color: $orange;
             }
-
             span {
                 @media screen and (max-width: $breakpoint1200) {
                     display: none;
                 }
             }
         }
-
         img {
-            width     : 28px;
-            height    : 28px;
+            width: 28px;
+            height: 28px;
             object-fit: contain;
         }
     }
-
     &__rating {
         @media screen and (max-width: $breakpoint1200) {
             display: none;
         }
-
         a {
-            display    : flex;
+            display: flex;
             align-items: center;
-
             img {
                 @media screen and (max-width: $breakpoint1450) {
                     width: 90%;
@@ -203,73 +169,63 @@
             }
         }
     }
-
     &__search {
         @media screen and (max-width: $breakpoint992) {
             display: none;
         }
-
         &-block {
-            height         : 48px;
-            display        : flex;
-            align-items    : center;
+            height: 48px;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            padding        : 0 16px;
-            cursor         : pointer;
-            position       : relative;
-            width          : 60px;
-
+            padding: 0 16px;
+            cursor: pointer;
+            position: relative;
+            width: 60px;
             &:after {
-                content        : "";
-                width          : 28px;
-                height         : 28px;
-                background     : url("../img/icon-search.svg") center center no-repeat;
+                content: "";
+                width: 28px;
+                height: 28px;
+                background: url("../img/icon-search.svg") center center no-repeat;
                 background-size: contain;
-                z-index        : 1;
-                transition     : all .1s ease;
+                z-index: 1;
+                transition: all .1s ease;
             }
-
             &:hover {
                 &:after {
                     filter: invert(66%) sepia(58%) saturate(3211%) hue-rotate(338deg) brightness(98%) contrast(106%);
                 }
             }
-
             &.open {
-
                 .header__search-form {
-                    width       : 260px;
+                    width: 260px;
                     padding-left: 20px;
                 }
-
                 .header__search-form--input {
                     width: 180px;
                 }
             }
         }
-
         &-form {
-            height       : 48px;
-            width        : 100%;
-            display      : flex;
-            align-items  : center;
-            border       : 1px solid $brown;
+            height: 48px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            border: 1px solid $brown;
             border-radius: 48px;
-            position     : absolute;
-            right        : 0;
-            top          : 0;
-            width        : 100%;
-            background   : $white;
-            transition   : all .3s ease;
-
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            background: $white;
+            transition: all .3s ease;
             &--input {
-                display   : flex;
-                width     : 0;
-                height    : 100%;
+                display: flex;
+                width: 0;
+                height: 100%;
                 transition: all .3s ease;
-                outline   : none;
+                outline: none;
             }
-
             &--btn {
                 font-size: 0;
             }

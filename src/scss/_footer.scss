@@ -1,246 +1,217 @@
 .footer {
-    display   : block;
+    display: block;
     background: $brown;
-    color     : $white;
-    padding   : 25px 0 30px;
+    color: $white;
+    padding: 25px 0 30px;
     overflow-x: hidden;
-
     @media screen and (max-width: $breakpoint1450) {
         padding: 30px 0;
     }
-
     @media screen and (max-width: $breakpoint992) {
         padding: 20px 0 15px;
     }
-
     &__block {
-        display              : grid;
+        display: grid;
         grid-template-columns: 14% 15% 15% 15% 39%;
-        gap                  : 2%;
-        position             : relative;
-
+        gap: 2%;
+        position: relative;
         @media screen and (max-width: $breakpoint1200) {
             grid-template-columns: repeat(5, auto);
-            gap                  : 20px;
+            gap: 20px;
         }
-
         @media screen and (max-width: $breakpoint992) {
             grid-template-columns: repeat(2, 1fr);
         }
-
         @media screen and (max-width: $breakpoint480) {
             grid-template-columns: repeat(1, 1fr);
         }
     }
-
     &__container {
         border-top: 1px solid $white;
         margin-top: 20px;
     }
-
     &__item {
         @media screen and (max-width: $breakpoint992) {
             &:first-child {
                 grid-column: span 2;
-
                 &:after {
-                    content   : "";
-                    position  : absolute;
-                    left      : -20px;
-                    top       : 100px;
-                    display   : block;
-                    width     : calc(100% + 40px);
-                    height    : 1px;
+                    content: "";
+                    position: absolute;
+                    left: -20px;
+                    top: 100px;
+                    display: block;
+                    width: calc(100% + 40px);
+                    height: 1px;
                     background: $white;
                 }
             }
         }
-
         @media screen and (max-width: $breakpoint480) {
             &:first-child {
                 grid-column: span 1;
             }
-
             &:not(:first-child):not(:nth-child(2)) &-title {
                 margin-top: 0;
             }
         }
-
         &-logo {
-            display       : flex;
+            display: flex;
             flex-direction: column;
-            align-items   : center;
-            width         : fit-content;
-            text-align    : center;
-            font-weight   : 500;
-            font-size     : 16px;
-            line-height   : 20px;
+            align-items: center;
+            width: fit-content;
+            text-align: center;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
             text-transform: uppercase;
-            color         : $white;
-            transition    : all .3s ease;
-
+            color: $white;
+            transition: all .3s ease;
             img {
                 transition: all .3s ease;
             }
-
             &:hover {
                 color: $white;
-
                 img {
                     filter: invert(83%) sepia(100%) saturate(4%) hue-rotate(154deg) brightness(209%) contrast(100%);
                 }
             }
         }
-
         &-title {
-            line-height  : 20px;
-            font-weight  : 500;
-            font-size    : 16px;
-            color        : $white;
-            margin-top   : 20px;
+            line-height: 20px;
+            font-weight: 500;
+            font-size: 16px;
+            color: $white;
+            margin-top: 20px;
             margin-bottom: 30px;
-
             @media screen and (max-width: $breakpoint992) {
                 margin-bottom: 10px;
             }
         }
-
         &-list {
-            font-size    : 14px;
-            line-height  : 20px;
-            color        : $white;
+            font-size: 14px;
+            line-height: 20px;
+            color: $white;
             margin-bottom: 30px;
-
             @media screen and (max-width: $breakpoint992) {
                 margin-bottom: 10px;
             }
-
             @media screen and (max-width: $breakpoint480) {
                 margin-bottom: 0;
             }
-
             span {
                 padding-left: 5px;
-                display     : block;
-                margin-top  : 5px;
+                display: block;
+                margin-top: 5px;
             }
-
             a {
-                color        : $white;
-                display      : inline-block;
-                padding      : 0 5px;
-                position     : relative;
-                line-height  : 26px;
+                color: $white;
+                display: inline-block;
+                padding: 0 5px;
+                position: relative;
+                line-height: 26px;
                 margin-bottom: 17px;
-
                 @media screen and (max-width: $breakpoint992) {
                     margin-bottom: 5px;
-                    line-height  : 24px;
+                    line-height: 24px;
                 }
-
                 &:after {
-                    content   : "";
-                    display   : block;
-                    width     : 0;
-                    height    : 1px;
+                    content: "";
+                    display: block;
+                    width: 0;
+                    height: 1px;
                     background: $white;
-                    position  : absolute;
-                    bottom    : 0;
-                    left      : 0;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
                     transition: all .3s ease;
-                    opacity   : 0;
+                    opacity: 0;
                 }
-
                 &:hover {
                     &:after {
-                        width  : 100%;
+                        width: 100%;
                         opacity: 1;
                     }
                 }
             }
         }
-
         &-rating {
             margin-top: 20px;
-            display   : block;
-
+            display: block;
             @media screen and (max-width: $breakpoint992) {
                 position: absolute;
-                right   : 0;
-                top     : 0;
+                right: 0;
+                top: 0;
+            }
+            @media screen and (max-width: $breakpoint577) {
+                width: 130px;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                max-width: fit-content;
             }
         }
-
         &-social {
-            display    : flex;
-            height     : 30px;
+            display: flex;
+            height: 30px;
             align-items: center;
-            gap        : 15px;
-
+            gap: 15px;
             @media screen and (max-width: $breakpoint577) {
                 margin-top: 20px;
             }
-
             li {
                 display: block;
-                width  : 30px;
-                height : 30px;
+                width: 30px;
+                height: 30px;
             }
-
             a {
-                display        : flex;
-                width          : 100%;
-                height         : 100%;
+                display: flex;
+                width: 100%;
+                height: 100%;
                 justify-content: center;
-                align-items    : center;
+                align-items: center;
             }
         }
     }
-
     &__copyright {
         margin-top: 15px;
-
         @media screen and (max-width: $breakpoint577) {
             text-align: center;
         }
-
         &-text {
             padding-left: 10px;
-            height      : 36px;
-            font-size   : 14px;
-            line-height : 20px;
-            color       : $white;
-            display     : flex;
-            align-items : center;
-
+            height: 36px;
+            font-size: 14px;
+            line-height: 20px;
+            color: $white;
+            display: flex;
+            align-items: center;
             @media screen and (max-width: $breakpoint577) {
-                flex-wrap  : wrap;
+                flex-wrap: wrap;
                 line-height: 14px;
             }
-
             a {
-                color      : $white;
-                display    : inline-block;
-                padding    : 0 5px;
-                position   : relative;
+                color: $white;
+                display: inline-block;
+                padding: 0 5px;
+                position: relative;
                 line-height: 26px;
-
                 &:after {
-                    content   : "";
-                    display   : block;
-                    width     : 0;
-                    height    : 1px;
+                    content: "";
+                    display: block;
+                    width: 0;
+                    height: 1px;
                     background: $white;
-                    position  : absolute;
-                    bottom    : 0;
-                    left      : 0;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
                     transition: all .3s ease;
-                    opacity   : 0;
+                    opacity: 0;
                 }
-
                 &:hover {
                     &:after {
-                        width  : 100%;
+                        width: 100%;
                         opacity: 1;
                     }
                 }

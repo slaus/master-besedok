@@ -1,40 +1,37 @@
 .breadcrumb {
     display: block;
-    margin-bottom: 20px;
-
+    margin: 20px 0;
     &__block {
-        height     : 60px;
-        display    : flex;
+        min-height: 30px;
+        height: auto;
+        display: flex;
         align-items: center;
-        gap        : 10px;
+        gap: 5px 10px;
+        flex-wrap: wrap;
+        padding: 20px 0;
     }
-
     &__link {
-        color        : $black;
+        color: $black;
         border-bottom: 1px dashed transparent;
-
         &:hover {
-            color        : $brown;
+            color: $brown;
             border-bottom: 1px dashed $brown;
         }
     }
-
     &__item {
         border-bottom: 1px solid $black;
     }
-
     span {
-        display    : inline-block;
-        height     : 16px;
+        display: inline-block;
+        height: 16px;
         font-weight: 300;
-        font-size  : 14px;
+        font-size: 14px;
         line-height: 16px;
-        color      : $black;
+        color: $black;
     }
-
     span+span {
         &:before {
-            content     : "/";
+            content: "/";
             margin-right: 5px;
         }
     }

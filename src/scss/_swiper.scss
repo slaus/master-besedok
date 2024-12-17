@@ -1,3 +1,9 @@
+.swiper {
+    &.swiper-with-buttons {
+        padding-bottom: 70px;
+    }
+}
+
 .swiper-horizontal>.swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal {
     bottom      : 0;
