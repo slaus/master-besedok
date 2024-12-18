@@ -1,0 +1,7 @@
+.block-video {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px 7%;
+    padding: 3.5% 7%;
+    width: 100%;
+}

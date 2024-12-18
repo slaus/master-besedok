@@ -1,0 +1,110 @@
+.property {
+    display       : flex;
+    flex-direction: column;
+    gap           : 30px;
+    padding       : 40px 50px;
+
+    &__text {
+        p+p {
+            margin-top: 15px;
+        }
+    }
+
+    &__catacters {
+        &-title {
+            font-weight   : 500;
+            font-size     : 17px;
+            line-height   : 20px;
+            margin-bottom : 20px;
+            text-transform: uppercase;
+        }
+
+        &-list {
+            display       : flex;
+            flex-direction: column;
+            gap           : 10px;
+        }
+
+        &-item {
+            display    : flex;
+            gap        : 15px;
+            align-items: center;
+            font-size  : 16px;
+            line-height: 20px;
+            font-weight: 500;
+
+            img {
+                width     : 24px;
+                height    : 24px;
+                object-fit: contain;
+            }
+
+            span {
+                font-size  : 14px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    &__variants {
+        &-title {
+            font-weight   : 500;
+            font-size     : 16px;
+            line-height   : 20px;
+            margin-bottom : 20px;
+            text-transform: uppercase;
+        }
+
+        &-list {
+            display              : grid;
+            width                : 100%;
+            grid-template-columns: repeat(4, 1fr);
+            gap                  : 20px;
+        }
+
+        &-item {
+            padding       : 20px;
+            background    : #ECE7E2;
+            border-radius : 20px;
+            width         : 100%;
+            height        : 100%;
+            display       : flex;
+            flex-direction: column;
+            gap           : 15px;
+
+            &--img {
+                height         : 50%;
+                width          : 100%;
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+                border-bottom: 1px solid $brown;
+                padding-bottom: 10px;
+
+                img {
+                    width: 100%;
+                    max-width: fit-content;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            &--title {
+                display: block;
+                font-weight: 500;
+                line-height: 20px;
+                color: $black;
+                text-align: center;
+                transition: all .3s ease;
+                &:hover {
+                    color: $brown;
+                }
+            }
+
+            &--desc {
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+    }
+}

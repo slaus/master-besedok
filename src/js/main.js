@@ -232,7 +232,7 @@ try {
 
     tabs('.projects__buttons', '.projects__buttons-item', '.projects__block', 'active');
     tabs('.steps__buttons', '.steps__buttons-item', '.steps__block', 'active');
-    tabs('.params__buttons', '.params__buttons-item', '.params__block', 'active');
+    tabs('.params__buttons', '.params__buttons-item', '.params__block', 'active', 'flex');
 } catch (error) { }
 
 
@@ -320,6 +320,49 @@ const swiperBest = new Swiper('.swiper-best', {
 });
 
 const swiperIndividual = new Swiper('.swiper-individual', {
+    slidesPerView: 2,
+    spaceBetween: 10,
+    loop: true,
+    mousewheel: false,
+    grabCursor: true,
+    autoplay: {
+        delay: 15000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    keyboard: {
+        enabled: true,
+    },
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
+    breakpoints: {
+        480: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        992: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        1200: {
+            slidesPerView: 3,
+            spaceBetween: 20
+        },
+    }
+});
+
+const swiperServices = new Swiper('.swiper-services', {
     slidesPerView: 2,
     spaceBetween: 10,
     loop: true,
@@ -686,6 +729,7 @@ const dragging = (trigger, size) => {
 };
 
 dragging('.tabs__wrapper', 767);
+dragging('.params__wrapper', 1499);
 dragging('.perelink__wrapper', 1199);
 
 
@@ -845,7 +889,25 @@ const formatPrices = (trigger) => {
     });
 };
 
-formatPrices(".format-price span span");
+formatPrices(".format-price");
+
+
+/** Total order */
+try {
+    const totalOrder = document.querySelector("#totalOrder");
+    let total = 0;
+
+    const totalSum = () => {
+        const prices = document.querySelectorAll(".payment__item-info--price span");
+        prices.forEach((item) => {
+            const price = +item.textContent.trim().replace(/\s/g, '');
+            total += price;
+        });
+        totalOrder.innerText = formatNumberWithSpaces(total);
+    };
+
+    totalSum();
+} catch (error) { }
 
 /** To top button */
 const toTopButton = document.getElementById('to-top-button');

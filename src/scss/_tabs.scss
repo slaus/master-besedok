@@ -1,26 +1,28 @@
 .tabs {
-    width: 100%;
-    overflow-x: hidden;
+    width        : 100%;
+    // overflow-x: hidden;
 
     &__wrapper {
         transition: all .3s ease;
-        @media screen and (max-width: $breakpoint768) {
-            overflow-x     : auto;
-            cursor         : grab;
-            scrollbar-width: none;
+    }
 
-            &::-webkit-scrollbar {
-                display: none;
-            }
+    .drag-enabled {
+        overflow-x     : auto;
+        cursor         : grab;
+        scrollbar-width: none;
 
-            &.dragging {
-                opacity: 0.5;
-                cursor : grabbing;
-            }
-            &.drag-enabled + .tabs__content {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &.dragging {
+            opacity: 0.5;
+            cursor : grabbing;
+        }
+
+        &.drag-enabled+.tabs__content {
+            padding-left : 15px;
+            padding-right: 15px;
         }
     }
 
@@ -115,14 +117,18 @@
     }
 
     &__content {
-        margin-top     : 50px;
-        display        : flex;
-        justify-content: center;
-        align-items    : center;
-        font-size      : 75px;
+        margin-top        : 50px;
+        display           : flex;
+        // justify-content: center;
+        align-items       : center;
+        font-size         : 75px;
 
         @media screen and (max-width: $breakpoint577) {
             width: 160%;
+        }
+
+        &-item {
+            font-size: initial;
         }
     }
 }

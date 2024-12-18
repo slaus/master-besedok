@@ -1,0 +1,49 @@
+.custom-checkbox {
+    position: relative;
+    display : inline-block;
+    width   : 24px;
+    height  : 24px;
+
+    input[type="checkbox"] {
+        position: absolute;
+        width   : 100%;
+        height  : 100%;
+        margin  : 0;
+        opacity : 0;
+        cursor  : pointer;
+        z-index : 2;
+
+        &:checked~.checkmark {
+            background: url("../img/icon-check-b.svg") center center no-repeat;
+
+            &::after {
+                content     : '';
+                position    : absolute;
+                left        : 7px;
+                top         : 3px;
+                width       : 6px;
+                height      : 12px;
+                border      : solid #fff;
+                border-width: 0 2px 2px 0;
+                transform   : rotate(45deg);
+            }
+        }
+    }
+
+    .checkmark {
+        position        : absolute;
+        top             : 0;
+        left            : 0;
+        width           : 100%;
+        height          : 100%;
+        background-color: #fff;
+        border          : 1px solid $black;
+        border-radius   : 4px;
+
+        &::after {
+            content : '';
+            position: absolute;
+            display : none;
+        }
+    }
+}

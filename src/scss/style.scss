@@ -4,6 +4,7 @@
 @import './reset';
 @import './global';
 // Sections or Pages SCSS-files imports
+@import './checkbox';
 @import './header';
 @import './navbar';
 @import './main';
@@ -29,6 +30,11 @@
 @import './hit';
 @import './params';
 @import './product';
+@import './product-props';
+@import './product-payment';
+@import './product-video';
+@import './product-color';
+@import './product-services';
 @import './individual';
 @import './video';
 @import './manufacture';
