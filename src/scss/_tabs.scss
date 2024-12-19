@@ -81,6 +81,7 @@
             color          : $white;
             margin         : 0;
             transition     : all .3s ease;
+            white-space: nowrap;
 
             @media screen and (max-width: $breakpoint1450) {
                 font-weight: 400;

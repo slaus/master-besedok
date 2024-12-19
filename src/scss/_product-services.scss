@@ -5,6 +5,19 @@
     padding       : 40px 50px;
     width         : 100%;
 
+    @media screen and (max-width: $breakpoint1450) {
+        padding: 30px 40px;
+    }
+
+    @media screen and (max-width: $breakpoint1200) {
+        padding: 30px;
+        gap    : 20px;
+    }
+
+    @media screen and (max-width: $breakpoint768) {
+        padding: 20px;
+    }
+
     &__title {
         font-size     : 17px;
         font-weight   : 500;
@@ -17,31 +30,45 @@
     &__wrapper {
         padding-bottom: 20px;
     }
-    
+
     .swiper-button-next,
     .swiper-button-prev {
         bottom: calc(50% - 23px);
+        @media screen and (max-width: $breakpoint577) {
+            bottom: 0;
+        }
     }
+
     .swiper-button-prev {
         left: 0;
+        @media screen and (max-width: $breakpoint577) {
+            left: auto;
+            right: 70px;
+        }
     }
+
     .swiper-button-next {
         right: 0;
     }
-    
+
     &__swiper {
-        position: relative;
-        width: 100%;
+        position    : relative;
+        width       : 100%;
         margin-left : auto;
         margin-right: auto;
         overflow    : hidden;
 
-        @media screen and (max-width: $breakpoint577) {}
+        @media screen and (max-width: $breakpoint577) {
+            padding-bottom: 70px;
+        }
 
         .services__wrap {
-            width: calc(100% - 40px);
-            margin-left: auto;
-            margin-right: auto;
+            margin  : 0 60px;
+            overflow: hidden;
+
+            @media screen and (max-width: $breakpoint577) {
+                margin: 0;
+            }
         }
     }
 
@@ -71,7 +98,7 @@
         display       : flex;
         flex-direction: column;
         align-items   : flex-start;
-        padding       : 20px 28px;
+        padding       : 20px;
         gap           : 12px;
         border-radius : 20px;
         background    : #ECE7E2;
@@ -79,7 +106,7 @@
         width         : calc(100% - 8px);
 
         @media screen and (max-width: $breakpoint1600) {
-            padding: 20px;
+            padding: 15px;
         }
 
         @media screen and (max-width: $breakpoint992) {
@@ -105,11 +132,10 @@
             margin-bottom: 5px;
 
             a {
-                color        : $black;
-                border-bottom: 1px solid transparent;
+                color: $black;
 
                 &:hover {
-                    border-bottom: 1px solid $black;
+                    color: $brown;
                 }
             }
         }

@@ -21,6 +21,17 @@
 
         @media screen and (max-width: $breakpoint577) {
             padding: 20px 15px;
+            margin-left: -15px;
+            margin-right: -15px;
+            border-radius: 0;
+        }
+
+        @media screen and (max-width: $breakpoint1200) {
+            & .tabs .tabs__wrapper + .tabs__content {
+                padding-left: 0;
+                padding-right: 0;
+                width: 100%;
+            }
         }
     }
 
@@ -35,6 +46,7 @@
         @media screen and (max-width: $breakpoint768) {
             flex-direction: column;
             align-items   : center;
+            border-radius: 28px;
         }
     }
 }

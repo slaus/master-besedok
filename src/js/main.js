@@ -363,7 +363,7 @@ const swiperIndividual = new Swiper('.swiper-individual', {
 });
 
 const swiperServices = new Swiper('.swiper-services', {
-    slidesPerView: 2,
+    slidesPerView: 1,
     spaceBetween: 10,
     loop: true,
     mousewheel: false,
@@ -386,10 +386,6 @@ const swiperServices = new Swiper('.swiper-services', {
         el: '.swiper-scrollbar',
     },
     breakpoints: {
-        480: {
-            slidesPerView: 2,
-            spaceBetween: 10
-        },
         768: {
             slidesPerView: 2,
             spaceBetween: 10
@@ -439,6 +435,49 @@ const swiperVideo = new Swiper('.swiper-video', {
         },
         992: {
             slidesPerView: 2,
+            spaceBetween: 10
+        },
+        1200: {
+            slidesPerView: 3,
+            spaceBetween: 20
+        },
+    }
+});
+
+const swiperProduct = new Swiper('.swiper-product', {
+    slidesPerView: 2,
+    spaceBetween: 10,
+    loop: true,
+    mousewheel: false,
+    grabCursor: true,
+    autoplay: {
+        delay: 15000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    keyboard: {
+        enabled: true,
+    },
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
+    breakpoints: {
+        480: {
+            slidesPerView: 3,
+            spaceBetween: 5
+        },
+        577: {
+            slidesPerView: 3,
+            spaceBetween: 10
+        },
+        992: {
+            slidesPerView: 3,
             spaceBetween: 10
         },
         1200: {
@@ -607,6 +646,66 @@ const swiperClasses = ['.swiper-advantage', '.swiper-project-1', '.swiper-projec
 window.addEventListener('load', () => initSwipers(swiperClasses));
 window.addEventListener('resize', () => initSwipers(swiperClasses));
 
+/** */
+function magicSwipers(swiperSelectors) {
+    const isMobile = window.innerWidth <= 991;
+
+    swiperSelectors.forEach((selector) => {
+        const swiperEl = document.querySelector(selector);
+
+        if (!swiperEl) return;
+
+        if (isMobile) {
+            if (!swiperEl.classList.contains('swiper-initialized')) {
+                swiperEl.classList.add('swiper');
+                const swiper = new Swiper(selector, {
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                    loop: true,
+                    mousewheel: false,
+                    grabCursor: true,
+                    autoplay: {
+                        delay: 7500,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: `${selector} .swiper-pagination`,
+                    },
+                    navigation: {
+                        nextEl: `${selector} .swiper-button-next`,
+                        prevEl: `${selector} .swiper-button-prev`,
+                    },
+                    keyboard: {
+                        enabled: true,
+                    },
+                    scrollbar: {
+                        el: `${selector} .swiper-scrollbar`,
+                    },
+                    breakpoints: {
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 10,
+                        },
+                    },
+                });
+
+                swiperEl.swiperInstance = swiper;
+            }
+        } else {
+            if (swiperEl.classList.contains('swiper-initialized')) {
+                swiperEl.swiperInstance.destroy(true, true);
+                swiperEl.classList.remove('swiper');
+                delete swiperEl.swiperInstance;
+            }
+        }
+    });
+}
+
+const forClasses = ['.swiper-product-video'];
+
+window.addEventListener('load', () => magicSwipers(forClasses));
+window.addEventListener('resize', () => magicSwipers(forClasses));
+
 
 /** Phone mask */
 const phoneMask = (trigger) => {
@@ -729,8 +828,8 @@ const dragging = (trigger, size) => {
 };
 
 dragging('.tabs__wrapper', 767);
-dragging('.params__wrapper', 1499);
 dragging('.perelink__wrapper', 1199);
+dragging('.params__wrapper', 1499);
 
 
 /** Dropdown */
