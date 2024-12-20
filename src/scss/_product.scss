@@ -2,8 +2,8 @@
     margin-bottom: 30px;
 
     &__title {
-        font-size        : 40px;
-        line-height      : 48px;
+        font-size        : 32px;
+        line-height      : 38px;
         font-family      : $fontSecondary;
         text-align       : left;
         margin-bottom    : 50px;
@@ -16,20 +16,20 @@
         align-self       : flex-start;
 
         @media screen and (max-width: $breakpoint1450) {
-            font-size    : 36px;
-            line-height  : 46px;
+            font-size    : 30px;
+            line-height  : 36px;
             margin-bottom: 30px;
         }
 
         @media screen and (max-width: $breakpoint1200) {
-            font-size  : 32px;
-            line-height: 44px;
+            font-size  : 29px;
+            line-height: 35px;
             order      : 0;
         }
 
         @media screen and (max-width: $breakpoint992) {
             font-size  : 28px;
-            line-height: 38px;
+            line-height: 34px;
         }
 
         @media screen and (max-width: $breakpoint768) {
@@ -157,6 +157,7 @@
             width   : 100%;
             overflow: hidden;
             position: relative;
+            margin-top: auto;
 
             &--wrap {
                 margin  : 0 60px;
@@ -261,6 +262,7 @@
         gap            : 4%;
         position       : relative;
         width          : 100%;
+        margin-top: auto;
 
         @media screen and (max-width: $breakpoint992) {
             display              : grid;

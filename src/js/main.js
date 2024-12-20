@@ -1026,6 +1026,19 @@ toTopButton.addEventListener('click', function () {
     });
 });
 
+/** Fixed menu on scroll */
+const navbar = document.getElementById('navbar');
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', function () {
+    if (window.scrollY > header.offsetHeight) {
+        document.querySelector("body").style.marginTop = `${header.offsetHeight - 5}px`;
+        navbar.classList.add("fixed");
+    } else {
+        document.querySelector("body").style.marginTop = `0`;
+        navbar.classList.remove("fixed");
+    }
+});
 
 /** Padding under Swiper */
 const swiperContainer = document.querySelectorAll('.swiper');
@@ -1038,3 +1051,19 @@ swiperContainer.forEach((item) => {
         item.classList.add('swiper-with-buttons');
     }
 });
+
+
+/** Change image from thumb in product page */
+try {
+    const imagesCover = document.querySelector("#imageCover");
+    const imagesThumb = document.querySelectorAll(".product__images-thumb");
+    imagesThumb.forEach((item) => {
+        item.addEventListener("click", (e) => {
+            e.preventDefault();
+            const imageSrc = item.querySelector("img").src;
+            const imageAlt = item.querySelector("img").getAttribute('alt');
+            imagesCover.src = imageSrc;
+            imagesCover.setAttribute("alt", imageAlt)
+        });
+    });
+} catch (error) { }

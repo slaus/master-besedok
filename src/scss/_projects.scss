@@ -13,6 +13,7 @@
     &__container {
         background: $brownLight;
         padding   : 60px 16%;
+        overflow: hidden;
 
         @media screen and (max-width: $breakpoint1600) {
             padding: 50px 8%;
