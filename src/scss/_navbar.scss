@@ -17,7 +17,19 @@
 
     &.fixed {
         position: fixed;
-        top: 0;
+        top     : 0;
+
+        .navbar__info-whatsapp {
+            display: block;
+        }
+
+        .navbar__info-phone {
+            display: block;
+        }
+
+        .navbar__info-callback {
+            display: none;
+        }
     }
 
     &__block {
@@ -50,25 +62,96 @@
         display        : flex;
         justify-content: center;
         align-items    : center;
+        gap            : 20px;
+
+        @media screen and (max-width: $breakpoint1450) {
+            gap: 15px;
+        }
 
         @media screen and (max-width: $breakpoint992) {
             display: none;
         }
 
-        a {
-            background   : $brown;
-            border-radius: 8px;
-            padding      : 16px 24px;
-            height       : 52px;
-            color        : $white;
-            display      : block;
+        &-callback {
 
-            @media screen and (max-width: $breakpoint1450) {
-                height: 48px;
+            a {
+                background   : $brown;
+                border-radius: 8px;
+                padding      : 16px 24px;
+                height       : 52px;
+                color        : $white;
+                display      : block;
+
+                @media screen and (max-width: $breakpoint1450) {
+                    height: 48px;
+                }
+
+                &:hover {
+                    background: $orange;
+                }
+            }
+        }
+
+        &-phone {
+            display: none;
+
+            a {
+                display    : flex;
+                gap        : 10px;
+                align-items: center;
+                font-size  : 16px;
+                font-weight: 500;
+                color      : $black;
+
+                @media screen and (max-width: $breakpoint1450) {
+                    font-size: 15px;
+                }
+
+                @media screen and (max-width: $breakpoint577) {
+                    font-size: 14px;
+                    gap      : 5px;
+                }
+
+                img {
+                    transition: all .1s ease;
+                }
+
+                &:hover {
+                    color: $orange;
+
+                    img {
+                        filter: invert(66%) sepia(58%) saturate(3211%) hue-rotate(338deg) brightness(98%) contrast(106%);
+                    }
+                }
             }
 
-            &:hover {
-                background: $orange;
+            img {
+                width     : 28px;
+                height    : 28px;
+                object-fit: contain;
+            }
+        }
+
+        &-whatsapp {
+            display: none;
+
+            a {
+                display    : flex;
+                gap        : 10px;
+                align-items: center;
+                font-size  : 16px;
+                font-weight: 500;
+                color      : $black;
+
+                @media screen and (max-width: $breakpoint1450) {
+                    font-size: 15px;
+                }
+            }
+
+            img {
+                width     : 28px;
+                height    : 28px;
+                object-fit: contain;
             }
         }
     }
@@ -87,6 +170,10 @@
 .menu {
     display: flex;
     gap    : 5px;
+
+    @media screen and (max-width: $breakpoint1200) {
+        gap: 0;
+    }
 
     &__item {
         display    : flex;
@@ -148,6 +235,10 @@
             height       : 44px;
             background   : transparent;
             border-radius: 4px;
+
+            @media screen and (max-width: $breakpoint1200) {
+                padding: 12px 10px;
+            }
 
             &:hover {
                 background: $white;

@@ -362,6 +362,53 @@ const swiperIndividual = new Swiper('.swiper-individual', {
     }
 });
 
+const swiperIndividualAbout = new Swiper('.swiper-individual-about', {
+    slidesPerView: 2,
+    spaceBetween: 10,
+    loop: true,
+    mousewheel: false,
+    grabCursor: true,
+    autoplay: {
+        delay: 15000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    keyboard: {
+        enabled: true,
+    },
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
+    breakpoints: {
+        480: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        992: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        1200: {
+            slidesPerView: 3,
+            spaceBetween: 20
+        },
+        1450: {
+            slidesPerView: 4,
+            spaceBetween: 20
+        },
+    }
+});
+
 const swiperServices = new Swiper('.swiper-services', {
     slidesPerView: 1,
     spaceBetween: 10,
