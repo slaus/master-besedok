@@ -755,37 +755,40 @@ window.addEventListener('resize', () => magicSwipers(forClasses));
 
 
 /** Phone mask */
-const phoneMask = (trigger) => {
-    document.querySelector(trigger).addEventListener("input", function (e) {
-        let input = e.target;
-        let value = input.value.replace(/\D/g, "");
+try {
+    const phoneMask = (trigger) => {
+        document.querySelectorAll(trigger).forEach((item) => {
+            item.addEventListener("input", function (e) {
+                let input = e.target;
+                let value = input.value.replace(/\D/g, "");
 
-        if (value === "") {
-            input.value = "";
-            return;
-        }
+                if (value === "") {
+                    input.value = "";
+                    return;
+                }
 
-        let formattedValue = "+7 (";
+                let formattedValue = "+7 (";
 
-        if (value.length > 1) {
-            formattedValue += value.substring(1, 4);
-        }
-        if (value.length >= 5) {
-            formattedValue += ") " + value.substring(4, 7);
-        }
-        if (value.length >= 8) {
-            formattedValue += "-" + value.substring(7, 9);
-        }
-        if (value.length >= 10) {
-            formattedValue += "-" + value.substring(9, 11);
-        }
+                if (value.length > 1) {
+                    formattedValue += value.substring(1, 4);
+                }
+                if (value.length >= 5) {
+                    formattedValue += ") " + value.substring(4, 7);
+                }
+                if (value.length >= 8) {
+                    formattedValue += "-" + value.substring(7, 9);
+                }
+                if (value.length >= 10) {
+                    formattedValue += "-" + value.substring(9, 11);
+                }
 
-        input.value = formattedValue;
-    });
-};
+                input.value = formattedValue;
+            });
+        });
+    };
 
-phoneMask("#phone_cons");
-phoneMask("#phone_modal");
+    phoneMask(".phone_mask");
+} catch (error) { }
 
 
 /** Dragging */
@@ -1114,3 +1117,101 @@ try {
         });
     });
 } catch (error) { }
+
+
+try {
+    const accordion = () => {
+        const items = document.querySelectorAll('.faq__desc-item--question')
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentNode
+                if (parent.classList.contains('open')) {
+                    parent.classList.remove('open')
+                } else {
+                    document
+                        .querySelectorAll('.faq__desc-item')
+                        .forEach(child => child.classList.remove('open'))
+                    parent.classList.add('open')
+                }
+            })
+        })
+    };
+
+    accordion();
+} catch (error) { }
+
+
+/** Gallery into modal */
+try {
+const galleryInModal = (classButton, idModal, galleryItem, classImage) => {
+
+	const galleryItems = document.querySelectorAll(classButton);
+	const modal = document.getElementById(idModal);
+	const modalImage = document.getElementById("modalImage");
+	const nextImage = document.getElementById("next-image");
+	const prevImage = document.getElementById("prev-image");
+    const body = document.querySelector("body");
+	let currentIndex = 0;
+
+	galleryItems.forEach((item, index) => {
+	  item.addEventListener("click", function (event) {
+		event.preventDefault();
+		currentIndex = index;
+		openModal(currentIndex);
+	  });
+	});
+
+	const openModal = (index) => {
+      body.classList.add('locked');
+	  modal.style.display = "flex";
+	  modalImage.src = galleryItems[index].closest(galleryItem).querySelector(classImage).src;
+
+	  const closeButton = document.querySelector(".close");
+	  closeButton.addEventListener("click", function () {
+		closeModal();
+	  });
+
+	  window.onclick = function (event) {
+		if (event.target === modal) {
+		  closeModal();
+		}
+	  };
+
+	  window.addEventListener("keydown", function (event) {
+		if (event.key === "ArrowLeft") {
+		  showPreviousImage();
+		} else if (event.key === "ArrowRight") {
+		  showNextImage();
+		}
+	  });
+
+	  prevImage.addEventListener("click", function (event) {
+		event.preventDefault();
+		showPreviousImage();
+	  });
+
+	  nextImage.addEventListener("click", function (event) {
+		event.preventDefault();
+		showNextImage();
+	  });
+	};
+
+	const closeModal = () => {
+	  modal.style.display = "none";
+      body.classList.remove('locked');
+	};
+
+	const showPreviousImage = () => {
+	  currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+	  modalImage.src = galleryItems[currentIndex].closest(galleryItem).querySelector(classImage).src;
+	};
+
+	const showNextImage = () => {
+	  currentIndex = (currentIndex + 1) % galleryItems.length;
+	  modalImage.src = galleryItems[currentIndex].closest(galleryItem).querySelector(classImage).src;
+	};
+};
+
+/** класс кнопки открытия картинки, id модального окна, класс элемента галереи, класс картинки элемента галереи */
+galleryInModal(".gallery__item-img", "galleryModal", ".gallery__item", ".gallery__item-img img");
+} catch (error) {}

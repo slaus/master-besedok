@@ -1,0 +1,222 @@
+.faq {
+    display: block;
+    margin : 0 0 30px;
+    padding: 0 0 30px;
+
+    @media screen and (max-width: $breakpoint768) {
+        padding: 0 0 20px;
+        margin : 0 0 20px;
+    }
+
+    &__title {
+        font-size     : 40px;
+        line-height   : 48px;
+        font-family   : $fontSecondary;
+        text-align    : center;
+        margin-bottom : 50px;
+        text-transform: uppercase;
+        width         : 100%;
+        max-width     : 1000px;
+        margin-left   : auto;
+        margin-right  : auto;
+
+        @media screen and (max-width: $breakpoint1450) {
+            font-size    : 38px;
+            line-height  : 46px;
+            margin-bottom: 30px;
+        }
+
+        @media screen and (max-width: $breakpoint1200) {
+            font-size  : 32px;
+            line-height: 44px;
+        }
+
+        @media screen and (max-width: $breakpoint992) {
+            font-size  : 28px;
+            line-height: 38px;
+        }
+
+        @media screen and (max-width: $breakpoint768) {
+            font-size  : 24px;
+            line-height: 32px;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            font-size  : 20px;
+            line-height: 28px;
+        }
+    }
+
+    &__block {
+        display              : grid;
+        grid-template-columns: 3fr 2fr;
+        gap                  : 30px;
+
+        @media screen and (max-width: $breakpoint1450) {
+            .form__group {
+                grid-template-columns: 1fr;
+                gap                  : 10px;
+                margin-bottom        : 10px;
+            }
+
+            .form__comment-agree {
+                order: 2;
+            }
+        }
+
+        @media screen and (max-width: $breakpoint1200) {
+            gap: 20px;
+        }
+
+        @media screen and (max-width: $breakpoint992) {
+            grid-template-columns: 1fr;
+
+            .form__group {
+                grid-template-columns: 1fr 1fr;
+                margin-bottom        : 20px;
+            }
+
+            .form__comment-agree {
+                order: unset;
+            }
+        }
+
+        @media screen and (max-width: $breakpoint768) {
+            .form__group {
+                grid-template-columns: 1fr;
+                gap                  : 10px;
+                margin-bottom        : 10px;
+            }
+
+            .form__comment-agree {
+                order: 2;
+            }
+        }
+
+    }
+
+    &__desc {
+        width          : 100%;
+        font-size      : 14px;
+        line-height    : 20px;
+        display        : flex;
+        flex-direction : column;
+        justify-content: space-between;
+        gap            : 30px;
+
+        @media screen and (max-width: $breakpoint1450) {}
+
+        @media screen and (max-width: $breakpoint768) {}
+
+        &-item {
+            border-radius : 8px;
+            display       : flex;
+            flex-direction: column;
+            overflow      : hidden;
+            background    : $brownLight;
+            height        : min-content;
+            transition    : all .5s ease;
+
+            &.open {
+                height: max-content;
+
+                .faq__desc-item--question {
+                    background: $orange;
+
+                    &:after {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                .faq__desc-item--answer {
+                    display: block;
+                    height : auto;
+                }
+            }
+
+            &--question {
+                cursor         : pointer;
+                display        : flex;
+                justify-content: space-between;
+                align-items    : center;
+                padding        : 16px 20px;
+                width          : 100%;
+                min-height     : 60px;
+                background     : $brown;
+                font-weight    : 500;
+                font-size      : 20px;
+                line-height    : 24px;
+                position       : relative;
+                color          : $white;
+                transition     : all .5s ease;
+                overflow       : hidden;
+
+                @media screen and (max-width: $breakpoint992) {
+                    font-size  : 19px;
+                    line-height: 36px;
+                }
+
+                @media screen and (max-width: $breakpoint768) {
+                    font-size  : 18px;
+                    line-height: 30px;
+                }
+
+                @media screen and (max-width: $breakpoint577) {
+                    font-size  : 16px;
+                    line-height: 20px;
+                }
+
+                &:after {
+                    content        : "";
+                    display        : flex;
+                    width          : 24px;
+                    height         : 24px;
+                    background     : url("../img/icon-arrow-down-w.svg") center center no-repeat;
+                    background-size: contain;
+                    transition     : all .5s ease;
+                }
+
+                span {
+                    display: block;
+                    width  : calc(100% - 50px);
+                }
+            }
+
+            &--answer {
+                display    : none;
+                font-size  : 14px;
+                line-height: 20px;
+                padding    : 16px 20px;
+                transition : all .5s ease;
+                height     : 0;
+
+                a {
+                    color        : $brown;
+                    border-bottom: 1px dashed $brown;
+
+                    &:hover {
+                        color        : $orange;
+                        border-bottom: 1px dashed $orange;
+                    }
+                }
+            }
+        }
+    }
+
+    &__form {
+        position: relative;
+        display : block;
+        width   : 100%;
+        height  : 100%;
+
+        &-block {
+            position     : sticky;
+            top          : 130px;
+            width        : 100%;
+            display      : block;
+            padding      : 30px 35px;
+            border       : 1px solid $brown;
+            border-radius: 40px;
+        }
+    }
+}
