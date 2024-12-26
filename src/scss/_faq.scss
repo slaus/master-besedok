@@ -104,9 +104,13 @@
         justify-content: space-between;
         gap            : 30px;
 
-        @media screen and (max-width: $breakpoint1450) {}
+        @media screen and (max-width: $breakpoint1200) {
+            gap: 20px;
+        }
 
-        @media screen and (max-width: $breakpoint768) {}
+        @media screen and (max-width: $breakpoint768) {
+            gap: 15px;
+        }
 
         &-item {
             border-radius : 8px;
@@ -217,6 +221,18 @@
             padding      : 30px 35px;
             border       : 1px solid $brown;
             border-radius: 40px;
+
+            @media screen and (max-width: $breakpoint1200) {
+                padding: 30px;
+            }
+
+            @media screen and (max-width: $breakpoint992) {
+                border-radius: 28px;
+            }
+
+            @media screen and (max-width: $breakpoint768) {
+                padding: 20px;
+            }
         }
     }
 }

@@ -1,0 +1,129 @@
+.address {
+    display   : block;
+    background: $rose;
+    padding   : 30px;
+
+    @media screen and (max-width: $breakpoint768) {
+        padding: 20px;
+    }
+
+    &__title {
+        font-size     : 36px;
+        line-height   : 48px;
+        font-family   : $fontSecondary;
+        text-transform: uppercase;
+        text-align    : center;
+        margin-bottom : 20px;
+
+        @media screen and (max-width: $breakpoint1200) {
+            font-size  : 32px;
+            line-height: 44px;
+        }
+
+        @media screen and (max-width: $breakpoint992) {
+            font-size  : 28px;
+            line-height: 38px;
+        }
+
+        @media screen and (max-width: $breakpoint768) {
+            font-size  : 24px;
+            line-height: 32px;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            font-size  : 20px;
+            line-height: 28px;
+        }
+    }
+
+    &__block {
+        display       : flex;
+        flex-direction: column;
+        gap           : 20px;
+        padding       : 40px 30px;
+        border-radius : 28px;
+        border        : 1px solid $brown;
+        width         : 100%;
+        max-width     : 1200px;
+        margin-left   : auto;
+        margin-right  : auto;
+
+        @media screen and (max-width: $breakpoint992) {
+            padding: 30px;
+        }
+    }
+
+    &__desc {
+        display        : flex;
+        gap            : 30px;
+        align-items    : center;
+        justify-content: space-between;
+
+        @media screen and (max-width: $breakpoint992) {
+            flex-direction : column;
+            justify-content: center;
+        }
+    }
+
+    &__text {
+        font-size  : 14px;
+        line-height: 20px;
+
+        @media screen and (max-width: $breakpoint768) {}
+
+        @media screen and (max-width: $breakpoint577) {}
+
+        p {
+
+            span {
+                text-decoration: underline;
+            }
+        }
+
+        p+p {
+            margin-top: 15px;
+        }
+    }
+
+    &__img {
+        width          : 100%;
+        max-width      : 250px;
+        height         : 100%;
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        align-items    : center;
+        flex           : 0 0 250px;
+
+        @media screen and (max-width: $breakpoint992) {
+            flex: 0 0 auto;
+        }
+
+        span {
+            font-size     : 24px;
+            line-height   : 20px;
+            font-weight   : 500;
+            color         : $black;
+            text-transform: uppercase;
+
+            @media screen and (max-width: $breakpoint992) {
+                font-size: 20px;
+            }
+
+            @media screen and (max-width: $breakpoint768) {
+                font-size: 17px;
+            }
+        }
+
+        img {
+            width     : 100%;
+            max-width : 180px;
+            height    : 100%;
+            object-fit: cover;
+
+            @media screen and (max-width: $breakpoint992) {
+                max-width: 150px;
+            }
+        }
+    }
+}
