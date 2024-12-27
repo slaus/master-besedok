@@ -219,9 +219,18 @@
             border-bottom : 1px solid $black;
             padding-bottom: 5px;
 
+            b,strong {
+                color: $black;
+                cursor: initial;
+            }
+
             &:hover {
                 color        : $brown;
-                border-bottom: 1px dashed $brown;
+                // border-bottom: 1px dashed $brown;
+
+                b,strong {
+                    color: $black;
+                }
             }
         }
     }
