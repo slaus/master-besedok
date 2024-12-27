@@ -1,0 +1,125 @@
+.garantee {
+    display: block;
+    margin : 0 0 30px;
+
+    @media screen and (max-width: $breakpoint768) {
+        margin: 0 0 20px;
+    }
+
+    &__title {}
+
+    &__block {
+        display              : grid;
+        grid-template-columns: 3fr 1fr;
+        gap                  : 20px;
+        align-items          : center;
+
+        @media screen and (max-width: $breakpoint1200) {
+            grid-template-columns: 2fr 1fr;
+        }
+
+        @media screen and (max-width: $breakpoint992) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__desc {
+        background   : $rose;
+        padding      : 30px;
+        border-radius: 40px;
+
+        @media screen and (max-width: $breakpoint992) {
+            border-radius: 0;
+            margin       : 0 -15px;
+        }
+
+        @media screen and (max-width: $breakpoint768) {
+            padding: 20px;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            padding: 15px;
+        }
+    }
+
+    &__text {
+        font-size      : 14px;
+        line-height    : 20px;
+        align-self     : center;
+        height         : 100%;
+        justify-content: space-around;
+        display        : flex;
+        flex-direction : column;
+
+        @media screen and (max-width: $breakpoint992) {
+            padding: 30px 20px;
+        }
+
+        @media screen and (max-width: $breakpoint768) {
+            padding: 20px;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            padding: 15px;
+        }
+
+        &-info {
+            display       : flex;
+            flex-direction: column;
+            gap           : 15px;
+            margin        : 20px 0;
+
+            &--item {
+                display    : flex;
+                gap        : 10px;
+                align-items: center;
+                font-size  : 16px;
+                font-weight: 500;
+
+                @media screen and (max-width: $breakpoint768) {
+                    font-size: 14px;
+                    align-items:flex-start
+                }
+
+                a {
+                    color: $black;
+
+                    &:hover {
+                        color: $brown;
+                    }
+                }
+
+                img {
+                    width: 52px;
+                    flex : 0 0 52px;
+
+                    @media screen and (max-width: $breakpoint768) {
+                        width: 30px;
+                        flex : 0 0 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__img {
+        width          : 100%;
+        height         : 100%;
+        max-height     : 550px;
+        overflow       : hidden;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        border-radius  : 16px;
+
+        @media screen and (max-width: $breakpoint992) {
+            margin-top: 30px;
+        }
+
+        img {
+            width     : 100%;
+            height    : 100%;
+            object-fit: contain;
+        }
+    }
+}
