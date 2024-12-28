@@ -26,37 +26,6 @@
         }
     }
 
-    &__photos {
-        display              : grid;
-        grid-template-columns: repeat(2,1fr);
-        gap                  : 20px;
-
-        @media screen and (max-width: $breakpoint992) {
-            grid-template-columns: 1fr;
-        }
-
-        &-img {
-            width     : 100%;
-            height    : 0;
-            overflow       : hidden;
-            display        : flex;
-            justify-content: center;
-            align-items    : center;
-            border-radius  : 16px;
-            padding-bottom: 66.6666%;
-            position: relative;
-    
-            img {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width     : 100%;
-                height    : 100%;
-                object-fit: cover;
-            }
-        }
-    }
-
     &__desc {
         background   : $rose;
         padding      : 30px;
@@ -133,20 +102,20 @@
         }
 
         &-info {
-            display: flex;
+            display       : flex;
             flex-direction: column;
-            gap: 15px;
-            margin: 20px 0;
+            gap           : 15px;
+            margin        : 20px 0;
 
             &--item {
-                display: flex;
-                gap: 10px;
+                display    : flex;
+                gap        : 10px;
                 align-items: center;
-                font-size: 16px;
+                font-size  : 16px;
                 font-weight: 500;
 
                 a {
-                    color:$black;
+                    color: $black;
 
                     &:hover {
                         color: $brown;
@@ -161,15 +130,22 @@
     }
 
     &__map {
-        width     : 100%;
-        height    : 100%;
+        width          : 100%;
+        height         : 100%;
+        min-height     : 400px;
         overflow       : hidden;
         display        : flex;
         justify-content: center;
         align-items    : center;
         border-radius  : 16px;
 
-        img {
+        @media screen and (max-width: $breakpoint992) {
+            min-height: 260px;
+            margin-top: 20px;
+        }
+
+        img,
+        iframe {
             width     : 100%;
             height    : 100%;
             max-height: 450px;

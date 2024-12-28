@@ -1,41 +1,74 @@
-.hit {
+.testimonial {
     display: block;
-    margin : 30px 0 0;
-    padding: 30px 0;
+    margin : 0;
+    padding: 0;
 
-    @media screen and (max-width: $breakpoint1450) {
-        padding: 20px 0;
-    }
+    &__top {
+        text-align   : center;
+        margin-bottom: 50px;
+        position     : relative;
 
-    @media screen and (max-width: $breakpoint768) {
-        margin: 20px 0 0;
+        @media screen and (max-width: $breakpoint992) {
+            margin-bottom: 30px;
+        }
+
+        &-title {
+            margin-bottom: 0;
+
+            @media screen and (max-width: $breakpoint577) {
+                text-align: center;
+            }
+
+            span {
+                color: $brown;
+            }
+        }
     }
 
     &__wrapper {
-        padding-bottom       : 20px;
-        display              : grid;
-        width                : 100%;
-        gap                  : 20px;
+        padding-bottom: 20px;
+        display       : flex;
+        width         : 100%;
+        gap           : 20px;
+        flex-wrap     : wrap;
 
         @media screen and (max-width: $breakpoint1200) {
             gap: 15px;
         }
 
-        @media screen and (max-width: $breakpoint577) {
-            grid-template-columns: repeat(1, 1fr);
+        // @media screen and (max-width: $breakpoint577) {
+        //     grid-template-columns: repeat(1, 1fr);
+        // }
+
+        // &-two-cols {
+        //     grid-template-columns: repeat(2, 1fr);
+        // }
+
+        // &-three-cols {
+        //     grid-template-columns: repeat(3, 1fr);
+
+        //     @media screen and (max-width: $breakpoint1200) {
+        //         grid-template-columns: repeat(2, 1fr);
+        //     }
+        // }
+    }
+
+    &__swiper {
+        width : 100%;
+
+        .swiper-wrapper {
+            padding-bottom: 20px;
         }
 
-        &-two-cols {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        &-three-cols {
-            grid-template-columns: repeat(3, 1fr);
+        .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
         }
     }
 
     &__block {
         position: relative;
+        margin-top: 30px;
     }
 
     &__item {
@@ -47,22 +80,26 @@
         border-radius : 20px;
         background    : rgba(224, 215, 207, 0.5);
         transition    : all .5s ease;
-        width         : calc(100% - 8px);
+        width         : calc(100% / 3 - 20px);
+        flex          : 0 0 calc(100% / 3 - 20px);
 
         @media screen and (max-width: $breakpoint1600) {
             padding: 20px;
         }
 
-        @media screen and (max-width: $breakpoint992) {
-            max-width   : 450px;
-            width       : 100%;
-            margin-left : auto;
-            margin-right: auto;
-            padding     : 15px;
+        @media screen and (max-width: $breakpoint1200) {
+            width: calc(100% / 2 - 15px);
+            flex : 0 0 calc(100% / 2 - 15px);
         }
 
         @media screen and (max-width: $breakpoint768) {
-            padding: 12px;
+            padding  : 12px;
+            max-width: 100%;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            width: 100%;
+            flex : 0 0 100%;
         }
 
         &:hover {
@@ -84,50 +121,56 @@
                 height    : 100%;
                 object-fit: cover;
             }
+        }
 
-            &--discount {
-                display        : flex;
-                justify-content: center;
-                align-items    : center;
-                padding        : 0 16px;
-                position       : absolute;
-                left           : 10px;
-                top            : 10px;
-                background     : $red;
-                border-radius  : 50px;
-                font-size      : 16px;
-                line-height    : 50px;
-                font-weight    : 500;
-                color          : $white;
-                text-transform : uppercase;
+        p {
+            font-size  : 15px;
+            line-height: 20px;
 
-                @media screen and (max-width: $breakpoint1450) {
-                    font-size  : 15px;
-                    line-height: 46px;
-                }
+            @media screen and (max-width: $breakpoint768) {
+                font-size  : 14px;
+                line-height: 18px;
+            }
+        }
 
-                @media screen and (max-width: $breakpoint992) {
-                    line-height: 44px;
-                }
+        a {
+            color         : $black;
+            border-bottom : 1px solid $black;
+            padding-bottom: 5px;
 
-                @media screen and (max-width: $breakpoint768) {
-                    line-height: 40px;
-                    font-size  : 14px;
+            b,
+            strong {
+                color : $black;
+                cursor: auto;
+            }
+
+            &:hover {
+                color        : $brown;
+                border-bottom: 1px solid $black;
+
+                b,
+                strong {
+                    color: $black;
                 }
             }
         }
     }
 
     &__subtitle {
-        height     : 40px;
-        font-weight: 500;
-        font-size  : 20px;
-        line-height: 20px;
-        margin-top : 10px;
-        color: $black;
+        font-weight  : 500;
+        font-size    : 18px;
+        line-height  : 24px;
+        margin-top   : 10px;
+        margin-bottom: 5px;
+        display      : block;
 
-        @media screen and (max-width: $breakpoint992) {
-            font-size: 18px;
+        a {
+            color        : $black;
+            border-bottom: 1px solid transparent;
+
+            &:hover {
+                border-bottom: 1px solid $black;
+            }
         }
     }
 
@@ -135,12 +178,12 @@
         display           : grid;
         grid-template-rows: repeat(2, 1fr);
         grid-auto-flow    : column;
-        gap               : 10px 25px;
-        margin-bottom     : 15px;
+        gap               : 5px 25px;
+        margin-bottom     : 30px;
         width             : 100%;
 
 
-        @media screen and (max-width: $breakpoint1450) {
+        @media screen and (max-width: $breakpoint992) {
             grid-template-rows: repeat(1, 1fr);
             grid-auto-flow    : row;
         }
@@ -196,11 +239,6 @@
             gap                  : 20px;
         }
 
-        @media screen and (max-width: $breakpoint768) {
-            grid-template-columns: repeat(1, 1fr);
-            text-align: right;
-        }
-
         &-price {
             display    : flex;
             gap        : 15px;
@@ -208,25 +246,16 @@
             line-height: 25px;
             color      : $red;
 
-            @media screen and (max-width: $breakpoint1450) {
-                flex-direction: column;
-                gap           : 0;
+            @media screen and (max-width: $breakpoint992) {
+                text-align: right;
             }
 
             span {
                 font-size  : 20px;
                 white-space: nowrap;
 
-                @media screen and (max-width: $breakpoint1600) {
-                    font-size: 19px;
-                }
-
                 span {
                     font-size: 20px;
-
-                    @media screen and (max-width: $breakpoint1600) {
-                        font-size: 19px;
-                    }
                 }
 
                 &.old {
@@ -236,10 +265,6 @@
 
                     span {
                         font-size: 17px;
-
-                        @media screen and (max-width: $breakpoint1600) {
-                            font-size: 16px;
-                        }
                     }
                 }
             }
@@ -260,22 +285,6 @@
                 font-size      : 16px;
                 font-weight    : 500;
                 line-height    : 20px;
-
-                @media screen and (max-width: $breakpoint1450) {
-                    font-size  : 15px;
-                    height     : 48px;
-                    font-weight: 400;
-                }
-
-                @media screen and (max-width: $breakpoint992) {
-                    height: 44px;
-                }
-
-                @media screen and (max-width: $breakpoint768) {
-                    width : fit-content;
-                    height: 40px;
-                    margin-left: auto;
-                }
 
                 &:hover {
                     background: $orange;

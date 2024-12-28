@@ -276,6 +276,24 @@ const swiperSlider = new Swiper('.swiper-slider', {
     },
 });
 
+const swiperTestimonial = new Swiper('.swiper-testimonial', {
+    slidesPerView: 1,
+    loop: true,
+    mousewheel: false,
+    grabCursor: true,
+    autoplay: {
+        delay: 15000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    keyboard: {
+        enabled: true,
+    },
+});
+
 const swiperBest = new Swiper('.swiper-best', {
     slidesPerView: 1,
     spaceBetween: 10,
@@ -314,6 +332,49 @@ const swiperBest = new Swiper('.swiper-best', {
         },
         1200: {
             slidesPerView: 3,
+            spaceBetween: 20
+        },
+    }
+});
+
+const swiperArticle = new Swiper('.swiper-articles', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    loop: true,
+    mousewheel: false,
+    grabCursor: true,
+    autoplay: {
+        delay: 15000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    keyboard: {
+        enabled: true,
+    },
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
+    breakpoints: {
+        480: {
+            slidesPerView: 1,
+            spaceBetween: 10
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        992: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        },
+        1200: {
+            slidesPerView: 2,
             spaceBetween: 20
         },
     }
@@ -1143,75 +1204,119 @@ try {
 
 /** Gallery into modal */
 try {
-const galleryInModal = (classButton, idModal, galleryItem, classImage) => {
+    const galleryInModal = (classButton, idModal, galleryItem, classImage) => {
 
-	const galleryItems = document.querySelectorAll(classButton);
-	const modal = document.getElementById(idModal);
-	const modalImage = document.getElementById("modalImage");
-	const nextImage = document.getElementById("next-image");
-	const prevImage = document.getElementById("prev-image");
-    const body = document.querySelector("body");
-	let currentIndex = 0;
+        const galleryItems = document.querySelectorAll(classButton);
+        const modal = document.getElementById(idModal);
+        const modalImage = document.getElementById("modalImage");
+        const nextImage = document.getElementById("next-image");
+        const prevImage = document.getElementById("prev-image");
+        const body = document.querySelector("body");
+        let currentIndex = 0;
 
-	galleryItems.forEach((item, index) => {
-	  item.addEventListener("click", function (event) {
-		event.preventDefault();
-		currentIndex = index;
-		openModal(currentIndex);
-	  });
-	});
+        galleryItems.forEach((item, index) => {
+            item.addEventListener("click", function (event) {
+                event.preventDefault();
+                currentIndex = index;
+                openModal(currentIndex);
+            });
+        });
 
-	const openModal = (index) => {
-      body.classList.add('locked');
-	  modal.style.display = "flex";
-	  modalImage.src = galleryItems[index].closest(galleryItem).querySelector(classImage).src;
+        const openModal = (index) => {
+            body.classList.add('locked');
+            modal.style.display = "flex";
+            modalImage.src = galleryItems[index].closest(galleryItem).querySelector(classImage).src;
 
-	  const closeButton = document.querySelector(".close");
-	  closeButton.addEventListener("click", function () {
-		closeModal();
-	  });
+            const closeButton = document.querySelector(".close");
+            closeButton.addEventListener("click", function () {
+                closeModal();
+            });
 
-	  window.onclick = function (event) {
-		if (event.target === modal) {
-		  closeModal();
-		}
-	  };
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            };
 
-	  window.addEventListener("keydown", function (event) {
-		if (event.key === "ArrowLeft") {
-		  showPreviousImage();
-		} else if (event.key === "ArrowRight") {
-		  showNextImage();
-		}
-	  });
+            window.addEventListener("keydown", function (event) {
+                if (event.key === "ArrowLeft") {
+                    showPreviousImage();
+                } else if (event.key === "ArrowRight") {
+                    showNextImage();
+                }
+            });
 
-	  prevImage.addEventListener("click", function (event) {
-		event.preventDefault();
-		showPreviousImage();
-	  });
+            prevImage.addEventListener("click", function (event) {
+                event.preventDefault();
+                showPreviousImage();
+            });
 
-	  nextImage.addEventListener("click", function (event) {
-		event.preventDefault();
-		showNextImage();
-	  });
-	};
+            nextImage.addEventListener("click", function (event) {
+                event.preventDefault();
+                showNextImage();
+            });
+        };
 
-	const closeModal = () => {
-	  modal.style.display = "none";
-      body.classList.remove('locked');
-	};
+        const closeModal = () => {
+            modal.style.display = "none";
+            body.classList.remove('locked');
+        };
 
-	const showPreviousImage = () => {
-	  currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-	  modalImage.src = galleryItems[currentIndex].closest(galleryItem).querySelector(classImage).src;
-	};
+        const showPreviousImage = () => {
+            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            modalImage.src = galleryItems[currentIndex].closest(galleryItem).querySelector(classImage).src;
+        };
 
-	const showNextImage = () => {
-	  currentIndex = (currentIndex + 1) % galleryItems.length;
-	  modalImage.src = galleryItems[currentIndex].closest(galleryItem).querySelector(classImage).src;
-	};
-};
+        const showNextImage = () => {
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            modalImage.src = galleryItems[currentIndex].closest(galleryItem).querySelector(classImage).src;
+        };
+    };
 
-/** класс кнопки открытия картинки, id модального окна, класс элемента галереи, класс картинки элемента галереи */
-galleryInModal(".gallery__item-img", "galleryModal", ".gallery__item", ".gallery__item-img img");
-} catch (error) {}
+    /** класс кнопки открытия картинки, id модального окна, класс элемента галереи, класс картинки элемента галереи */
+    galleryInModal(".gallery__item-img", "galleryModal", ".gallery__item", ".gallery__item-img img");
+} catch (error) { }
+
+
+/** Creating menu into article from headers */
+try {
+    const section = document.getElementById('article');
+    const headings = section.querySelectorAll('h2, h3, h4');
+    const sidebarMenu = document.getElementById('article-menu');
+
+    headings.forEach(function (heading, index) {
+        var listItem = document.createElement('li');
+
+        var anchor = document.createElement('a');
+        var span = document.createElement('span');
+
+        span.textContent = (index + 1 < 10 ? '0' : '') + (index + 1);
+
+        var textNode = document.createTextNode(heading.textContent);
+
+        var headingId = heading.id || 'heading' + index;
+        heading.id = headingId;
+
+        anchor.href = '#' + headingId;
+
+        anchor.appendChild(span);
+        anchor.appendChild(textNode);
+
+        anchor.addEventListener('click', function (event) {
+            event.preventDefault();
+        
+            const targetElement = document.querySelector(anchor.getAttribute('href'));
+            const offsetPosition = targetElement.offsetTop - 100;
+        
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth',
+            });
+        });
+        
+
+        listItem.appendChild(anchor);
+
+        sidebarMenu.appendChild(listItem);
+    });
+} catch (e) { }

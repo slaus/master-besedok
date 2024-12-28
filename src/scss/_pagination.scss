@@ -1,7 +1,15 @@
 .pagination {
     display      : block;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     color        : $black;
+
+    @media screen and (max-width: $breakpoint992) {
+        margin-bottom: 30px;
+    }
+
+    @media screen and (max-width: $breakpoint577) {
+        margin-bottom: 20px;
+    }
 
     &__block {
         display        : flex;

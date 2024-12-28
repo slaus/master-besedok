@@ -1,0 +1,168 @@
+.main__article {
+    .articles {
+        .swiper {
+            padding-bottom: 0;
+    
+            @media screen and (max-width: $breakpoint992) {
+                padding-bottom: 70px;
+            }
+        }
+    
+        .swiper-button-next,
+        .swiper-button-prev {
+            display: none;
+    
+            @media screen and (max-width: $breakpoint992) {
+                display: flex;
+            }
+        }
+    }
+}
+
+.articles {
+    display: block;
+    margin : 0 0 20px;
+    padding: 0 0 20px;
+    @media screen and (max-width: $breakpoint768) {
+        margin: 0;
+        padding: 0;
+    }
+
+    &__wrap {
+    }
+
+    &__wrapper {
+        padding-bottom: 20px;
+        display       : grid;
+        width         : 100%;
+        gap           : 20px;
+
+        @media screen and (max-width: $breakpoint1200) {
+            gap: 15px;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        &-two-cols {
+            grid-template-columns: repeat(2, 1fr);
+
+            @media screen and (max-width: $breakpoint768) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        &-three-cols {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__block {
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__item {
+        display              : flex;
+        display              : grid;
+        grid-template-columns: 2fr 3fr;
+        padding              : 20px;
+        gap                  : 15px;
+        border-radius        : 20px;
+        background           : rgba(224, 215, 207, 0.5);
+        transition           : all .5s ease;
+        width                : calc(100% - 8px);
+
+        @media screen and (max-width: $breakpoint1200) {
+            grid-template-columns: 1fr;
+        }
+
+        @media screen and (max-width: $breakpoint992) {
+            width  : 100%;
+            padding: 15px;
+        }
+
+        @media screen and (max-width: $breakpoint768) {
+            padding              : 12px;
+            grid-template-columns: 2fr 3fr;
+        }
+
+        @media screen and (max-width: $breakpoint577) {
+            grid-template-columns: 1fr;
+        }
+
+        &:hover {
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        &-img {
+            width        : 100%;
+            padding-top  : 66.66%;
+            border-radius: 8px;
+            position     : relative;
+            overflow     : hidden;
+
+            img {
+                position  : absolute;
+                top       : 0;
+                left      : 0;
+                width     : 100%;
+                height    : 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &__info {
+        display        : flex;
+        flex-direction : column;
+        gap            : 10px;
+        margin-bottom  : 15px;
+        width          : 100%;
+        justify-content: space-between;
+
+        @media screen and (max-width: $breakpoint1450) {}
+
+        &-title {
+            font-weight: 500;
+            font-size  : 20px;
+            line-height: 20px;
+            margin-top : 10px;
+            color      : $black;
+
+            @media screen and (max-width: $breakpoint992) {
+                font-size: 18px;
+            }
+        }
+
+        &-desc {
+            font-size  : 14px;
+            line-height: 20px;
+        }
+
+        &-date {
+            line-height: 20px;
+            font-weight: 500;
+
+            span {
+                font-weight: 400;
+            }
+        }
+
+        &-more {
+            margin-top   : auto;
+            color        : $black;
+            border-bottom: 1px solid $black;
+            padding-left : 5px;
+            padding-right: 5px;
+            width        : max-content;
+            line-height  : 20px;
+            font-weight  : 500;
+
+            &:hover {
+                border-bottom: 1px dashed $black;
+            }
+        }
+    }
+}
