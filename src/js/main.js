@@ -1275,6 +1275,7 @@ try {
 
     /** класс кнопки открытия картинки, id модального окна, класс элемента галереи, класс картинки элемента галереи */
     galleryInModal(".gallery__item-img", "galleryModal", ".gallery__item", ".gallery__item-img img");
+    galleryInModal(".testimonial__item-img", "testimonialModal", ".swiper-slide", ".testimonial__item-img img");
 } catch (error) { }
 
 

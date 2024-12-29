@@ -5,7 +5,7 @@
 
     &__top {
         text-align   : center;
-        margin-bottom: 50px;
+        margin-bottom: 0;
         position     : relative;
 
         @media screen and (max-width: $breakpoint992) {
@@ -13,14 +13,41 @@
         }
 
         &-title {
-            margin-bottom: 0;
+            font-size     : 40px;
+            line-height   : 48px;
+            font-family   : $fontSecondary;
+            text-align    : center;
+            margin-bottom : 50px;
+            text-transform: uppercase;
+            width         : 100%;
+            max-width     : 1000px;
+            margin-left   : auto;
+            margin-right  : auto;
 
-            @media screen and (max-width: $breakpoint577) {
-                text-align: center;
+            @media screen and (max-width: $breakpoint1450) {
+                font-size    : 38px;
+                line-height  : 46px;
+                margin-bottom: 30px;
             }
 
-            span {
-                color: $brown;
+            @media screen and (max-width: $breakpoint1200) {
+                font-size  : 32px;
+                line-height: 44px;
+            }
+
+            @media screen and (max-width: $breakpoint992) {
+                font-size  : 28px;
+                line-height: 38px;
+            }
+
+            @media screen and (max-width: $breakpoint768) {
+                font-size  : 24px;
+                line-height: 32px;
+            }
+
+            @media screen and (max-width: $breakpoint577) {
+                font-size  : 20px;
+                line-height: 28px;
             }
         }
     }
@@ -54,20 +81,20 @@
     }
 
     &__swiper {
-        width : 100%;
+        width: 100%;
 
         .swiper-wrapper {
             padding-bottom: 20px;
         }
 
         .swiper-pagination-bullet {
-            width: 8px;
+            width : 8px;
             height: 8px;
         }
     }
 
     &__block {
-        position: relative;
+        position  : relative;
         margin-top: 30px;
     }
 
@@ -112,6 +139,7 @@
             border-radius: 8px;
             position     : relative;
             overflow     : hidden;
+            cursor: pointer;
 
             img {
                 position  : absolute;
